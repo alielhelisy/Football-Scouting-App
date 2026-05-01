@@ -213,6 +213,9 @@ CREATE DATABASE ScoutingApp;
 
 ```
 cd "D:\Ali\University\4th Semester\Software Engineering\Project\scouting_app"
+```
+
+```
 python app.py
 ```
 
