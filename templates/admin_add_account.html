@@ -1,48 +1,123 @@
 {% extends "base.html" %}
-{% block title %}Add Account{% endblock %}
+{% block title %}Add Account - Scouting App{% endblock %}
+{% block body_class %}create-account-page admin-add-account-page{% endblock %}
 
 {% block content %}
-<div class="auth-card">
-    <div class="auth-header">ADD ACCOUNT</div>
-    <form method="POST" class="auth-form">
-        <div class="form-group">
-            <label for="username">Username</label>
-            <input type="text" id="username" name="username" value="{{ request.form.get('username', '') }}" required autofocus>
+<form method="POST" class="create-account-card">
+    <div class="card-header">
+        <div class="card-logo">
+            <div class="card-logo-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <circle cx="12" cy="12" r="10"/>
+                    <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/>
+                    <line x1="2" y1="12" x2="22" y2="12"/>
+                </svg>
+            </div>
+            <span class="card-logo-text">Scouting App</span>
         </div>
-        <div class="form-group">
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" value="{{ request.form.get('name', '') }}" required>
-        </div>
-        <div class="form-group">
-            <label for="surname">Surname</label>
-            <input type="text" id="surname" name="surname" value="{{ request.form.get('surname', '') }}" required>
-        </div>
-        <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" value="{{ request.form.get('email', '') }}" required>
-        </div>
-        <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" required>
-        </div>
-        <div class="form-group">
-            <label for="confirm_password">Confirm Password</label>
-            <input type="password" id="confirm_password" name="confirm_password" required>
-        </div>
-        <div class="form-group">
-            <label for="role">Role</label>
-            <select id="role" name="role">
-                <option value="SCOUT" {% if request.form.get('role', 'SCOUT') == 'SCOUT' %}selected{% endif %}>SCOUT</option>
-                <option value="ADMIN" {% if request.form.get('role') == 'ADMIN' %}selected{% endif %}>ADMIN</option>
-            </select>
-        </div>
-        <div class="auth-actions">
-            <a href="{{ url_for('admin_accounts') }}" class="link-btn">Back to Accounts</a>
-            <div class="auth-buttons">
-                <a href="{{ url_for('admin_accounts') }}" class="btn btn-secondary">Cancel</a>
-                <button type="submit" class="btn btn-primary">Create</button>
+        <div class="card-title">Add Account</div>
+    </div>
+
+    <div class="card-body">
+        <div class="field">
+            <label class="field-label" for="username">Username</label>
+            <div class="input-wrap">
+                <input type="text" id="username" name="username" value="{{ request.form.get('username', '') }}" placeholder="Choose a username" required autofocus>
             </div>
         </div>
-    </form>
-</div>
+
+        <div class="fields-row">
+            <div class="field">
+                <label class="field-label" for="name">Name</label>
+                <div class="input-wrap">
+                    <input type="text" id="name" name="name" value="{{ request.form.get('name', '') }}" placeholder="First name" required>
+                </div>
+            </div>
+            <div class="field">
+                <label class="field-label" for="surname">Surname</label>
+                <div class="input-wrap">
+                    <input type="text" id="surname" name="surname" value="{{ request.form.get('surname', '') }}" placeholder="Last name" required>
+                </div>
+            </div>
+        </div>
+
+        <div class="field">
+            <label class="field-label" for="email">Email</label>
+            <div class="input-wrap">
+                <input type="email" id="email" name="email" value="{{ request.form.get('email', '') }}" placeholder="your@email.com" required>
+            </div>
+        </div>
+
+        <div class="field">
+            <label class="field-label" for="password">Password</label>
+            <div class="input-wrap">
+                <input type="password" id="password" name="password" placeholder="Create a password" oninput="checkStrength(this.value)" required>
+                <button class="toggle-pw" type="button" onclick="togglePw('password', this)" aria-label="Toggle password visibility">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                        <circle cx="12" cy="12" r="3"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="strength-bar"><div class="strength-fill" id="strength-fill"></div></div>
+        </div>
+
+        <div class="field">
+            <label class="field-label" for="confirm_password">Confirm Password</label>
+            <div class="input-wrap">
+                <input type="password" id="confirm_password" name="confirm_password" placeholder="Repeat your password" required>
+                <button class="toggle-pw" type="button" onclick="togglePw('confirm_password', this)" aria-label="Toggle confirm password visibility">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                        <circle cx="12" cy="12" r="3"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <div class="field">
+            <label class="field-label" for="role">Role</label>
+            <div class="input-wrap">
+                <select id="role" name="role" class="create-account-select">
+                    <option value="SCOUT" {% if request.form.get('role', 'SCOUT') == 'SCOUT' %}selected{% endif %}>SCOUT</option>
+                    <option value="ADMIN" {% if request.form.get('role') == 'ADMIN' %}selected{% endif %}>ADMIN</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="divider"></div>
+    </div>
+
+    <div class="card-footer">
+        <a class="link-back" href="{{ url_for('admin_accounts') }}">Back to Accounts</a>
+        <div class="footer-btns">
+            <a class="btn-cancel" href="{{ url_for('admin_accounts') }}">Cancel</a>
+            <button class="btn-create-account" type="submit">Create</button>
+        </div>
+    </div>
+</form>
+
+<script>
+    function togglePw(id, btn) {
+        const input = document.getElementById(id);
+        const isHidden = input.type === 'password';
+        input.type = isHidden ? 'text' : 'password';
+        btn.querySelector('svg').innerHTML = isHidden
+            ? '<line x1="1" y1="1" x2="23" y2="23"/><path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/>'
+            : '<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>';
+    }
+
+    function checkStrength(val) {
+        const fill = document.getElementById('strength-fill');
+        let score = 0;
+        if (val.length >= 8) score++;
+        if (/[A-Z]/.test(val)) score++;
+        if (/[0-9]/.test(val)) score++;
+        if (/[^A-Za-z0-9]/.test(val)) score++;
+        const widths = ['0%', '25%', '50%', '75%', '100%'];
+        const colors = ['#d65a44', '#d65a44', '#d79536', '#28a865', '#28a865'];
+        fill.style.width = widths[score];
+        fill.style.background = colors[score];
+    }
+</script>
 {% endblock %}
