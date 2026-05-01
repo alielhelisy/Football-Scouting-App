@@ -24,7 +24,7 @@
         <div class="nav-info">
             <span class="nav-user">{{ session['username'] }}</span>
             {% if session.get('role') == 'ADMIN' %}
-                <span class="nav-role admin-badge">&#9733; ADMIN</span>
+                <span class="nav-role admin-badge">Admin</span>
             {% else %}
                 <span class="nav-role">Role: SCOUT</span>
             {% endif %}
