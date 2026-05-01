@@ -1,0 +1,9 @@
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+}
+
+.dashboard-page .legend-gk { background: #d9a441; }
+.dashboard-page .legend-def { background: #3184cf; }
+.dashboard-page .legend-mid { background: #28a865; }
+.dashboard-page .legend-fwd { background: #d65a44; }

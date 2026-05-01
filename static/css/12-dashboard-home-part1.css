@@ -1,0 +1,239 @@
+
+/* A zone groups all cards for one position + the "+" button */
+.board-zone {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Individual player card on the pitch */
+.board-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 100px;
+    padding: 0.45rem 0.8rem;
+    background: #d6d9de;
+    border: 2px solid #aaa;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #1a1a1a;
+    box-shadow: 2px 2px 4px rgba(0,0,0,0.25);
+    transition: background 0.12s, transform 0.1s;
+    cursor: pointer;
+}
+.board-card:hover { background: #c0c4cc; transform: translateY(-2px); }
+
+.board-pos  { font-size: 0.82rem; font-weight: 700; color: #1a1a1a; }
+.board-name { font-size: 0.78rem; color: #333; margin-top: 1px; }
+
+.board-scout {
+    font-size: 0.68rem;
+    color: #1a56db;
+    margin-top: 2px;
+}
+
+/* Empty slot */
+.board-empty { opacity: 0.5; border-style: dashed; }
+.board-empty:hover { background: #d6d9de; transform: none; }
+.empty-slot { font-style: italic; color: #888; }
+
+/* "+" add button beside each zone */
+.board-add {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    background: rgba(0,0,0,0.18);
+    color: #fff;
+    border-radius: 50%;
+    font-size: 1rem;
+    font-weight: 700;
+    text-decoration: none;
+    line-height: 1;
+    transition: background 0.12s;
+    flex-shrink: 0;
+}
+.board-add:hover { background: rgba(0,0,0,0.35); }
+
+/* ── Player Profile bio grid ── */
+.bio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 0.5rem 1.2rem;
+}
+.bio-item {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.88rem;
+}
+.bio-label {
+    font-size: 0.75rem;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.1rem;
+}
+.bio-value {
+    font-weight: 600;
+    color: #1a1a1a;
+}
+
+/* Home position board */
+.home-pitch {
+    width: min(860px, 100%);
+    min-height: 620px;
+    margin: 0 auto;
+    padding: 1.8rem 0.8rem;
+    background: #5a8a5a;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1.4rem;
+}
+
+.home-pitch-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: clamp(1.5rem, 7vw, 4.5rem);
+    flex-wrap: wrap;
+}
+
+.home-position-card {
+    width: 160px;
+    height: 84px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #d6d9de;
+    border: 2px solid #a7adb5;
+    border-radius: 5px;
+    color: #111;
+    text-decoration: none;
+    box-shadow: 3px 4px 7px rgba(0,0,0,0.28);
+    transition: background 0.12s, transform 0.1s, box-shadow 0.12s;
+}
+
+.home-position-card:hover {
+    background: #c9ced6;
+    transform: translateY(-2px);
+    box-shadow: 4px 6px 10px rgba(0,0,0,0.32);
+}
+
+.home-position-label {
+    font-size: 1.2rem;
+    font-weight: 800;
+    line-height: 1.1;
+}
+
+.home-position-count {
+    margin-top: 0.55rem;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+@media (max-width: 640px) {
+    .home-pitch {
+        min-height: auto;
+        padding: 1rem;
+        gap: 1rem;
+    }
+
+    .home-pitch-row {
+        gap: 1rem;
+    }
+
+    .home-position-card {
+        width: min(160px, 100%);
+        height: 78px;
+    }
+}
+.detail-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.detail-header-actions form {
+    display: inline;
+}
+.table-actions {
+    text-align: right;
+    white-space: nowrap;
+}
+
+.table-actions form {
+    display: inline;
+}
+.role-form {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.role-form select {
+    padding: 0.25rem 0.4rem;
+    border: 1px solid #aaa;
+    border-radius: 3px;
+    background: white;
+}
+.protected-label {
+    color: #666;
+    font-size: 0.82rem;
+    font-weight: 700;
+}
+.account-page {
+    margin: -1.5rem -1rem 0;
+}
+
+.account-hero {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 2rem;
+    align-items: center;
+    background: #d6d6d6;
+    padding: 2rem 2.8rem;
+}
+
+.account-identity {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    min-height: 112px;
+}
+
+.account-identity h2 {
+    font-size: 1.45rem;
+    margin-bottom: 0.3rem;
+}
+
+.account-role {
+    color: #666;
+    font-weight: 700;
+}
+
+.account-fields {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(180px, 1fr));
+    gap: 1.5rem 4rem;
+    max-width: 720px;
+}
+
+.account-fields span,
+.activity-comment span,
+.activity-rating span,
+.activity-kind span,
+.activity-user span,
+.activity-player span,
+.account-stats span {
+    display: block;
+    color: #777;
+    font-weight: 700;
+    text-transform: none;
+}
