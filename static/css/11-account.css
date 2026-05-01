@@ -238,3 +238,174 @@
 
 .tabs-header {
     display: flex;
+    border-bottom: 1px solid var(--account-border);
+    padding: 0 24px;
+    gap: 4px;
+}
+
+.tab-btn {
+    font-family: 'Barlow', sans-serif;
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--account-muted);
+    padding: 14px 18px;
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    transition: color 0.2s, border-color 0.2s;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+}
+
+.tab-btn:hover,
+.tab-btn.active {
+    color: var(--account-text);
+}
+
+.tab-btn.active {
+    border-bottom-color: var(--account-accent);
+}
+
+.tab-content {
+    padding: 24px;
+}
+
+.stat-card {
+    background: var(--account-surface2);
+    border: 1px solid var(--account-border);
+    border-radius: 10px;
+    padding: 18px 22px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.stat-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--account-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.stat-value {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--account-text);
+    line-height: 1;
+}
+
+.reports-card {
+    background: var(--account-surface2);
+    border: 1px solid var(--account-border);
+    border-radius: 10px;
+    padding: 18px 22px;
+}
+
+.reports-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--account-dim);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+}
+
+.empty-state,
+.players-empty {
+    text-align: center;
+    padding: 32px 0;
+    color: var(--account-muted);
+    font-size: 13.5px;
+    font-weight: 500;
+}
+
+.empty-icon {
+    font-size: 24px;
+    margin-bottom: 10px;
+    opacity: 0.35;
+}
+
+.account-report-item {
+    display: grid;
+    grid-template-columns: 1.1fr 1.7fr 80px 110px;
+    gap: 1rem;
+    padding: 14px 0;
+    border-top: 1px solid var(--account-border);
+    color: var(--account-text);
+    text-decoration: none;
+}
+
+.account-report-item:first-of-type {
+    border-top: none;
+}
+
+.account-report-item strong {
+    display: block;
+    color: var(--account-text);
+}
+
+.account-report-item span,
+.account-report-item p {
+    color: var(--account-dim);
+    margin: 0;
+}
+
+.account-report-kicker {
+    color: var(--account-muted);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 4px;
+}
+
+.players-empty-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--account-surface2);
+    border: 1px solid var(--account-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 14px;
+    font-size: 22px;
+    opacity: 0.5;
+}
+
+.players-empty-text {
+    font-size: 13.5px;
+    font-weight: 500;
+    color: var(--account-muted);
+}
+
+.dark-account-player-list {
+    padding: 0;
+}
+
+.dark-account-player-list .account-player-head,
+.dark-account-player-list .account-player-row {
+    color: var(--account-text);
+}
+
+.dark-account-player-list .account-player-head {
+    border-bottom-color: var(--account-border);
+    color: var(--account-muted);
+}
+
+.dark-account-player-list .account-player-row {
+    border-bottom-color: var(--account-border);
+}
+
+.dark-account-player-list .account-player-row:hover {
+    background: rgba(255,255,255,0.04);
+}
+
+.dark-account-player-list .account-position-tags span {
+    background: var(--account-border);
+    color: var(--account-text);
+}
