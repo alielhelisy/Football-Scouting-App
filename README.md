@@ -212,7 +212,7 @@ CREATE DATABASE ScoutingApp;
 ### Step 3 — Run the app
 
 ```
-cd "D:\Ali\University\4th Semester\Software Engineering\Project\scouting_app"
+cd /d "D:\Ali\University\4th Semester\Software Engineering\Project\scouting_app"
 ```
 
 ```
