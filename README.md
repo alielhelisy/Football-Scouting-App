@@ -187,8 +187,11 @@ Tests cover business logic only — no routes, no database, no Flask context.
 ### Run Tests
 
 ```
-cd "D:\Ali\University\4th Semester\Software Engineering\Project\scouting_app"
-pytest tests/test_logic.py -v
+cd /d "D:\Ali\University\4th Semester\Software Engineering\Project\scouting_app"
+```
+
+```
+python -m pytest tests/test_logic.py -v
 ```
 
 ---
