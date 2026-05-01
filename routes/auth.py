@@ -140,6 +140,10 @@ def account_info():
 def delete_account():
     db = get_db()
     user_id = session["user_id"]
+    user = db.execute("SELECT username FROM users WHERE id = ?", (user_id,)).fetchone()
+    if user and user["username"].lower() == "admin":
+        flash("The main admin account cannot be deleted.", "error")
+        return redirect(url_for("account_info"))
     db.execute("DELETE FROM players WHERE user_id = ?", (user_id,))
     db.execute("DELETE FROM users WHERE id = ?", (user_id,))
     db.commit()

@@ -166,7 +166,7 @@ def edit_player(player_id):
             "first_name=?, last_name=?, nationality=?, birthday=?, height=?, weight=?, foot=? "
             "WHERE id=? AND user_id=?",
             (name, gender, team, position, other_position, first_name, last_name,
-             nationality, birthday, height, weight, player_id, session["user_id"])
+             nationality, birthday, height, weight, foot, player_id, session["user_id"])
         )
         db.commit()
         flash("Player updated.", "success")

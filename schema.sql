@@ -16,11 +16,20 @@ CREATE TABLE users (
 );
 
 CREATE TABLE players (
-    id       INT IDENTITY(1,1) PRIMARY KEY,
-    user_id  INT           NOT NULL,
-    name     NVARCHAR(100) NOT NULL,
-    team     NVARCHAR(100) NOT NULL DEFAULT '',
-    position NVARCHAR(20)  NOT NULL,
+    id             INT IDENTITY(1,1) PRIMARY KEY,
+    user_id        INT           NOT NULL,
+    name           NVARCHAR(100) NOT NULL,
+    gender         NVARCHAR(10)  NOT NULL DEFAULT 'Male',
+    team           NVARCHAR(100) NOT NULL DEFAULT '',
+    position       NVARCHAR(20)  NOT NULL DEFAULT '',
+    other_position NVARCHAR(20)  NOT NULL DEFAULT '',
+    first_name     NVARCHAR(100) NOT NULL DEFAULT '',
+    last_name      NVARCHAR(100) NOT NULL DEFAULT '',
+    nationality    NVARCHAR(100) NOT NULL DEFAULT '',
+    birthday       DATE NULL,
+    height         INT NULL,
+    weight         INT NULL,
+    foot           NVARCHAR(10)  NOT NULL DEFAULT '',
     FOREIGN KEY (user_id) REFERENCES users(id)
 );
 
