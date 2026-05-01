@@ -3898,6 +3898,94 @@ button:disabled { opacity: 0.45; cursor: not-allowed; }
     transform: translateY(0);
 }
 
+.admin-add-account-page .navbar {
+    background: #0f1117;
+    border-bottom: 1px solid #1e2230;
+    min-height: 56px;
+    padding: 0 28px;
+    box-shadow: none;
+}
+
+.admin-add-account-page .personal-brand {
+    display: none;
+}
+
+.admin-add-account-page .nav-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.admin-add-account-page .nav-user {
+    font-weight: 700;
+    font-size: 15px;
+    color: #d79536;
+    letter-spacing: 0.02em;
+}
+
+.admin-add-account-page .nav-role,
+.admin-add-account-page .nav-role.admin-badge {
+    background: #d65a44;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 4px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.admin-add-account-page .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.admin-add-account-page .nav-links a:not(.btn) {
+    color: #9ca3af;
+    font-size: 13.5px;
+    font-weight: 500;
+    padding: 6px 12px;
+    border-radius: 6px;
+    text-decoration: none;
+}
+
+.admin-add-account-page .nav-links a:not(.btn):hover {
+    color: #fff;
+    background: rgba(255,255,255,0.06);
+}
+
+.admin-add-account-page .nav-links .btn,
+.admin-add-account-page .nav-links button {
+    font-family: 'Barlow', sans-serif;
+    font-size: 12.5px;
+    font-weight: 600;
+    padding: 7px 14px;
+    border-radius: 7px;
+    border: none;
+    cursor: pointer;
+    letter-spacing: 0.02em;
+    transition: all 0.18s ease;
+    text-decoration: none;
+    line-height: 1.2;
+    white-space: nowrap;
+}
+
+.admin-add-account-page .btn-report { background: #d79536; color: #fff; }
+.admin-add-account-page .btn-search { background: #3184cf; color: #fff; }
+.admin-add-account-page .btn-primary { background: #28a865; color: #fff; }
+.admin-add-account-page .btn-delete-account { background: #d65a44; color: #fff; }
+.admin-add-account-page .btn-logout { background: #374151; color: #e5e7eb; }
+.admin-add-account-page .nav-links .btn:hover,
+.admin-add-account-page .nav-links button:hover {
+    filter: brightness(1.12);
+    transform: translateY(-1px);
+}
+
+.admin-add-account-page .container {
+    min-height: calc(100vh - 56px);
+}
+
 @media (max-width: 520px) {
     .create-account-page .fields-row {
         grid-template-columns: 1fr;
