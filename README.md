@@ -1,6 +1,6 @@
 # Football Scouting Web Application
 ### Software Engineering Final Project — Spring 2026
-**Student:** Ali El-Helisy | **ID:** 220303928
+**Student:** Ali Elhelisy, Mazen Mohamed | **ID:** 220303928, 220303940
 
 ---
 
