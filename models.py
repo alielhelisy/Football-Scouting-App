@@ -14,6 +14,7 @@ POSITIONS = {
     "CF":        "CF",
 }
 VALID_POSITIONS = set(POSITIONS.keys())
+DISPLAY_TO_KEY = {v.upper(): k for k, v in POSITIONS.items()}
 
 FOOT_OPTIONS   = ["Right", "Left", "Both"]
 GENDER_OPTIONS = ["Male", "Female"]
@@ -46,9 +47,11 @@ def validate_team(team: str) -> str:
 
 def validate_position(position: str) -> str:
     pos = (position or "").strip().upper()
-    if pos and pos not in VALID_POSITIONS:
-        raise ValueError("Invalid position selected.")
-    return pos
+    if pos in VALID_POSITIONS:
+        return pos
+    if pos in DISPLAY_TO_KEY:
+        return DISPLAY_TO_KEY[pos]
+    raise ValueError("Invalid position selected.")
 
 
 def validate_stars(stars) -> float:
