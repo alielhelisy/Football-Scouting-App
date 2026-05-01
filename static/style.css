@@ -1314,6 +1314,7 @@ button:disabled { opacity: 0.45; cursor: not-allowed; }
 
 .add-player-page .container {
   min-height: calc(100vh - 56px);
+  flex-direction: row;
   justify-content: center;
   padding: 36px 24px;
 }
