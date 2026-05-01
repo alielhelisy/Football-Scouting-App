@@ -198,6 +198,8 @@ python -m pytest tests/test_logic.py -v
 
 ## Run the App
 
+Open Command Prompt, then run:
+
 ```
 cd /d "D:\Ali\University\4th Semester\Software Engineering\Project\scouting_app"
 ```
