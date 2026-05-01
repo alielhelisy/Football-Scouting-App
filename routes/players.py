@@ -65,11 +65,16 @@ def players_by_position(pos_key):
             "SELECT TOP 1 comments FROM reports WHERE player_id = ? ORDER BY created_at DESC",
             (p["id"],)
         ).fetchone()
+        all_reports = db.execute(
+            "SELECT rating FROM reports WHERE player_id = ?", (p["id"],)
+        ).fetchall()
+        avg_rating = compute_average_stars(all_reports)
         players.append({
             "id":          p["id"],
             "name":        p["name"],
             "position":    p["position"],
             "scout_name":  p["scout_name"],
+            "rating":      int(avg_rating) if avg_rating == int(avg_rating) else avg_rating,
             "last_review": last["comments"] if last and last["comments"] else "",
         })
 
