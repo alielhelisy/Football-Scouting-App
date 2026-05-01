@@ -156,7 +156,7 @@ reports
 |---|---|
 | validate_player_name | Not empty, max 100 chars |
 | validate_team | Strips whitespace, max 100 chars |
-| validate_position | Must be one of the 7 valid position keys |
+| validate_position | Must be one of the 7 valid position keys, or empty string |
 | validate_stars | Integer between 1 and 5 |
 | validate_non_negative_int | Number >= 0 (minutes, goals) |
 | validate_cards | None, Yellow, or Red only |
@@ -166,15 +166,42 @@ reports
 
 ---
 
-## Setup and Running
+## Unit Tests (tests/test_logic.py)
 
-### Requirements
+Tests cover business logic only — no routes, no database, no Flask context.
+
+### What is tested
+
+| Group | Tests |
+|---|---|
+| validate_player_name | valid name, empty raises, whitespace-only raises, too long raises |
+| validate_team | strips whitespace, empty returns empty, None returns empty |
+| validate_position | all 7 valid keys, lowercase accepted, invalid raises, empty allowed |
+| validate_stars | 1-5 valid, 0 raises, 6 raises, string number, non-numeric raises |
+| validate_non_negative_int | valid, zero valid, negative raises, string number, non-numeric raises |
+| validate_cards | None/Yellow/Red valid, invalid raises |
+| compute_average_stars | single, multiple, empty list, decimal |
+| filter_players_by_position | correct filter, empty returns all, no match, case insensitive |
+| stars_display | full stars, empty stars, partial, rounding |
+
+### Run Tests
+
+```
+cd "D:\Ali\University\4th Semester\Software Engineering\Project\scouting_app"
+pytest tests/test_logic.py -v
+```
+
+---
+
+## Setup
+
+### Step 1 — Install dependencies
 
 ```
 pip install flask pyodbc pytest
 ```
 
-### Database Setup (one time only)
+### Step 2 — Create the database (one time only)
 
 Open SSMS, connect to `localhost\SQLEXPRESS`, then run:
 
@@ -182,7 +209,7 @@ Open SSMS, connect to `localhost\SQLEXPRESS`, then run:
 CREATE DATABASE ScoutingApp;
 ```
 
-### Run the App
+### Step 3 — Run the app
 
 ```
 cd "D:\Ali\University\4th Semester\Software Engineering\Project\scouting_app"
@@ -191,15 +218,11 @@ python app.py
 
 Open browser at: http://127.0.0.1:5000
 
-### Run Tests
+---
 
-```
-pytest tests/test_logic.py -v
-```
+## Reset Database
 
-### Reset Database
-
-Run in SSMS:
+Run in SSMS if you need a clean slate:
 
 ```sql
 USE ScoutingApp;
