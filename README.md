@@ -193,23 +193,7 @@ pytest tests/test_logic.py -v
 
 ---
 
-## Setup
-
-### Step 1 — Install dependencies
-
-```
-pip install flask pyodbc pytest
-```
-
-### Step 2 — Create the database (one time only)
-
-Open SSMS, connect to `localhost\SQLEXPRESS`, then run:
-
-```sql
-CREATE DATABASE ScoutingApp;
-```
-
-### Step 3 — Run the app
+## Run the App
 
 ```
 cd /d "D:\Ali\University\4th Semester\Software Engineering\Project\scouting_app"
