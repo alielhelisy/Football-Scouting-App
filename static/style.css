@@ -1285,6 +1285,115 @@ button:disabled { opacity: 0.45; cursor: not-allowed; }
   }
 }
 
+/* Add Player reference-layout refinements */
+.add-player-page .navbar {
+  min-height: 48px;
+  padding: 0 20px;
+}
+
+.add-player-page .nav-user {
+  font-size: 14px;
+}
+
+.add-player-page .nav-role,
+.add-player-page .nav-role.admin-badge {
+  font-size: 10px;
+  padding: 4px 9px;
+}
+
+.add-player-page .nav-links a:not(.btn) {
+  font-size: 13px;
+  padding: 6px 10px;
+}
+
+.add-player-page .nav-links .btn,
+.add-player-page .nav-links button {
+  font-size: 12px;
+  padding: 8px 14px;
+}
+
+.add-player-page .container {
+  min-height: calc(100vh - 48px);
+  justify-content: flex-start;
+  padding: 64px 16px 60px;
+}
+
+.add-player-page .ap-card {
+  width: 560px;
+  max-width: calc(100vw - 32px);
+  border-radius: 16px;
+}
+
+.add-player-page .ap-header {
+  min-height: 72px;
+  padding: 20px 27px;
+}
+
+.add-player-page .ap-header-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+}
+
+.add-player-page .ap-title {
+  font-size: 22px;
+  letter-spacing: 0.04em;
+}
+
+.add-player-page .ap-section-header {
+  min-height: 32px;
+  padding: 9px 27px;
+}
+
+.add-player-page .ap-section-body {
+  padding: 21px 27px;
+  gap: 15px;
+}
+
+.add-player-page .ap-row {
+  gap: 14px;
+}
+
+.add-player-page .ap-row-3 {
+  gap: 13px;
+}
+
+.add-player-page .ap-field {
+  gap: 8px;
+}
+
+.add-player-page .ap-label {
+  font-size: 10px;
+  letter-spacing: 0.12em;
+}
+
+.add-player-page .ap-card input[type="text"],
+.add-player-page .ap-card input[type="date"],
+.add-player-page .ap-card input[type="number"],
+.add-player-page .ap-card select {
+  min-height: 38px;
+  font-size: 14px;
+  padding: 9px 14px;
+}
+
+.add-player-page .ap-footer {
+  min-height: 70px;
+  padding: 17px 27px;
+}
+
+.add-player-page .ap-btn-cancel,
+.add-player-page .ap-btn-submit {
+  min-height: 36px;
+}
+
+.add-player-page .ap-btn-cancel {
+  padding: 9px 22px;
+}
+
+.add-player-page .ap-btn-submit {
+  padding: 9px 26px;
+}
+
 .pitch-board {
     min-width: 480px;
     max-width: 700px;
