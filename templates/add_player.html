@@ -14,7 +14,7 @@
                 <line x1="16" y1="11" x2="22" y2="11"></line>
             </svg>
         </div>
-        <h1 class="ap-title">Add Player{% if preset_pos %} - {{ positions.get(preset_pos, preset_pos) }}{% endif %}</h1>
+        <h1 class="ap-title">Add Player{% if preset_pos %} &mdash; {{ positions.get(preset_pos, preset_pos) }}{% endif %}</h1>
     </header>
 
     {% if error %}
@@ -48,7 +48,7 @@
                         <div class="ap-field">
                             <label class="ap-label" for="position">Main Position</label>
                             <select id="position" name="position">
-                                <option value="">-- None --</option>
+                                <option value="">&mdash; None &mdash;</option>
                                 {% for key, display in positions.items() %}
                                 <option value="{{ key }}"
                                     {% if request.form.get('position', preset_pos or '') == key %}selected{% endif %}>
@@ -60,7 +60,7 @@
                         <div class="ap-field">
                             <label class="ap-label" for="other_position">Other Position</label>
                             <select id="other_position" name="other_position">
-                                <option value="">-- None --</option>
+                                <option value="">&mdash; None &mdash;</option>
                                 {% for key, display in positions.items() %}
                                 <option value="{{ key }}"
                                     {% if request.form.get('other_position', '') == key %}selected{% endif %}>
@@ -138,7 +138,7 @@
                     <div class="ap-field">
                         <label class="ap-label" for="foot">Preferred Foot</label>
                         <select id="foot" name="foot">
-                            <option value="">-- Not specified --</option>
+                            <option value="">&mdash; Not specified &mdash;</option>
                             {% for f in foot_options %}
                             <option value="{{ f }}" {% if request.form.get('foot', '') == f %}selected{% endif %}>{{ f }}</option>
                             {% endfor %}
