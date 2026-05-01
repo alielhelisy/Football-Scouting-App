@@ -56,12 +56,16 @@ def test_position_lowercase_accepted():
     assert validate_position("cb") == "CB"
     assert validate_position("cf") == "CF"
 
+def test_wide_player_display_name_accepted():
+    assert validate_position("Wide Player") == "WIDE"
+
 def test_invalid_position_raises():
     with pytest.raises(ValueError):
         validate_position("STRIKER")
 
-def test_empty_position_allowed():
-    assert validate_position("") == ""
+def test_empty_position_raises():
+    with pytest.raises(ValueError):
+        validate_position("")
 
 
 # ── validate_stars ────────────────────────────────────────────────────────────
