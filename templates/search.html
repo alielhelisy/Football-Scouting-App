@@ -1,83 +1,112 @@
 {% extends "base.html" %}
-{% block title %}Search Players — Scouting App{% endblock %}
+{% block title %}Search - Scouting App{% endblock %}
+{% block body_class %}search-page{% endblock %}
 
 {% block content %}
-<div class="page-header">
-    <h2>Search Players by Position</h2>
-</div>
+<div class="search-card">
+    <form method="POST">
+        <div class="search-header">
+            <div class="search-header-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                </svg>
+            </div>
+            <div class="search-title">Search Players by Position</div>
+        </div>
 
-<form method="POST" class="search-form">
-    <div class="search-fields">
-        <label>
-            <span>Name</span>
-            <input type="text" name="name" value="{{ name_query }}">
-        </label>
-        <label>
-            <span>Club</span>
-            <input type="text" name="club" value="{{ club_query }}">
-        </label>
-    </div>
-    <div class="checkbox-group">
-        <span class="checkbox-label">Positions:</span>
-        {% for key, display in positions.items() %}
-        <label class="checkbox-item">
-            <input type="checkbox" name="positions" value="{{ key }}"
-                   {% if key in selected %}checked{% endif %}>
-            {{ display }}
-        </label>
-        {% endfor %}
-        <button type="submit" class="btn btn-primary">Search</button>
-    </div>
-</form>
+        <div class="search-body">
+            <div class="inputs-row">
+                <div class="field">
+                    <label class="field-label" for="name">Name</label>
+                    <input id="name" type="text" name="name" value="{{ name_query }}" placeholder="Search by name...">
+                </div>
+                <div class="field">
+                    <label class="field-label" for="club">Club</label>
+                    <input id="club" type="text" name="club" value="{{ club_query }}" placeholder="Search by club...">
+                </div>
+            </div>
 
-<div class="table-wrapper">
-    <table class="players-table" id="searchTable">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Club</th>
-                <th>Position</th>
-                <th>Rating</th>
-                <th>Last Review</th>
-                <th>Last By</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% if results %}
-                {% for p in results %}
-                <tr class="player-row" data-id="{{ p.id }}" onclick="selectRow(this, {{ p.id }})">
-                    <td>{{ p.id }}</td>
-                    <td>{{ p.name }}</td>
-                    <td>{{ p.club or '&mdash;'|safe }}</td>
-                    <td>{{ p.position }}</td>
-                    <td>{{ p.rating }}</td>
-                    <td>{{ p.last_review or '—' }}</td>
-                    <td>{{ p.last_by }}</td>
-                </tr>
+            <div class="positions-row">
+                <span class="positions-label">Positions:</span>
+                {% for key, display in positions.items() %}
+                <label class="pos-chip {% if key in selected %}checked{% endif %}">
+                    <input type="checkbox" name="positions" value="{{ key }}" {% if key in selected %}checked{% endif %}>
+                    <span class="pos-chip-check">
+                        <svg width="9" height="9" viewBox="0 0 10 10" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2,5 4,7 8,3"/></svg>
+                    </span>
+                    <span class="pos-chip-label">{{ display }}</span>
+                </label>
                 {% endfor %}
-            {% else %}
-                <tr><td colspan="7" class="empty-cell">
-                    {% if searched %}No players found.{% else %}Enter a name, club, or select positions and click Search.{% endif %}
-                </td></tr>
-            {% endif %}
-        </tbody>
-    </table>
-</div>
+            </div>
 
-<div class="action-bar">
-    <button type="button" class="btn btn-action" id="btnDetails" disabled onclick="goDetails()">Open Details</button>
-    <a href="{{ url_for('dashboard') }}" class="btn btn-action btn-secondary">Close</a>
+            <button type="submit" class="btn-search-main">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                </svg>
+                Search
+            </button>
+        </div>
+    </form>
+
+    <div class="table-wrap">
+        <table id="searchTable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Club</th>
+                    <th>Position</th>
+                    <th>Rating</th>
+                    <th>Last Review</th>
+                    <th>Last By</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if results %}
+                    {% for p in results %}
+                    <tr class="player-row" data-id="{{ p.id }}" onclick="selectRow(this, {{ p.id }})">
+                        <td>{{ p.id }}</td>
+                        <td>{{ p.name }}</td>
+                        <td>{{ p.club or '&mdash;'|safe }}</td>
+                        <td>{{ p.position }}</td>
+                        <td>{{ p.rating }}</td>
+                        <td>{{ p.last_review or '&mdash;'|safe }}</td>
+                        <td>{{ p.last_by }}</td>
+                    </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td colspan="7" class="table-empty">
+                            {% if searched %}No players found.{% else %}Enter a name, club, or select positions and click Search.{% endif %}
+                        </td>
+                    </tr>
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="search-footer">
+        <button type="button" class="btn-open-details" id="btnDetails" disabled onclick="goDetails()">Open Details</button>
+        <a href="{{ url_for('dashboard') }}" class="btn-close">Close</a>
+    </div>
 </div>
 
 <script>
     let selectedId = null;
+
+    document.querySelectorAll('.pos-chip input[type="checkbox"]').forEach(input => {
+        input.addEventListener('change', () => {
+            input.closest('.pos-chip').classList.toggle('checked', input.checked);
+        });
+    });
+
     function selectRow(row, id) {
         document.querySelectorAll('.player-row').forEach(r => r.classList.remove('selected'));
         row.classList.add('selected');
         selectedId = id;
         document.getElementById('btnDetails').disabled = false;
     }
+
     function goDetails() {
         if (selectedId) window.location.href = '/players/' + selectedId;
     }
