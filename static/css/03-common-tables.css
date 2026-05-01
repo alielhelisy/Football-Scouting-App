@@ -1,0 +1,56 @@
+/* ── Page Header ── */
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.8rem;
+    background: #c8cdd5;
+    padding: 0.6rem 0.8rem;
+    border: 1px solid #aaa;
+    border-radius: 3px;
+}
+.page-header h2 { font-size: 1rem; font-weight: 700; }
+
+/* ── Table ── */
+.table-wrapper {
+    border: 1px solid #aaa;
+    border-radius: 3px;
+    background: white;
+    min-height: 200px;
+}
+.players-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.players-table th {
+    background: #c8cdd5;
+    padding: 0.45rem 0.7rem;
+    text-align: left;
+    font-size: 0.85rem;
+    font-weight: 700;
+    border-bottom: 1px solid #aaa;
+}
+.players-table td {
+    padding: 0.4rem 0.7rem;
+    font-size: 0.88rem;
+    border-bottom: 1px solid #eee;
+}
+.players-table tr:last-child td { border-bottom: none; }
+.player-row { cursor: pointer; }
+.player-row:hover { background: #e8ecf0; }
+.player-row.selected { background: #b8d4f0 !important; }
+.empty-cell { text-align: center; color: #888; padding: 1.5rem !important; font-style: italic; }
+.stars-cell { color: #c8860a; font-size: 1rem; }
+
+/* ── Action Bar (bottom buttons like Java app) ── */
+.action-bar {
+    display: flex;
+    gap: 0.5rem;
+    padding: 0.7rem 0.5rem;
+    background: #c8cdd5;
+    border: 1px solid #aaa;
+    border-top: none;
+    border-radius: 0 0 3px 3px;
+    flex-wrap: wrap;
+}
+.action-bar form { display: inline; }

@@ -1,0 +1,411 @@
+/* Dark account page replacement */
+.account-page-body {
+    --account-bg: #0f1117;
+    --account-surface: #161b27;
+    --account-surface2: #1c2232;
+    --account-border: #232a3a;
+    --account-accent: #28a865;
+    --account-orange: #d79536;
+    --account-blue: #3184cf;
+    --account-text: #e5e7eb;
+    --account-muted: #6b7280;
+    --account-dim: #9ca3af;
+    background: var(--account-bg);
+    color: var(--account-text);
+    font-family: 'Barlow', 'Segoe UI', sans-serif;
+}
+
+.account-page-body .navbar {
+    background: #0f1117;
+    border-bottom: 1px solid #1e2230;
+    min-height: 56px;
+    padding: 0 28px;
+    box-shadow: none;
+}
+
+.account-page-body .personal-brand {
+    display: none;
+}
+
+.account-page-body .nav-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.account-page-body .nav-user {
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--account-orange);
+    letter-spacing: 0.02em;
+}
+
+.account-page-body .nav-role,
+.account-page-body .nav-role.admin-badge {
+    background: #d65a44;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 4px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.account-page-body .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.account-page-body .nav-links a:not(.btn) {
+    color: #9ca3af;
+    font-size: 13.5px;
+    font-weight: 500;
+    padding: 6px 12px;
+    border-radius: 6px;
+    text-decoration: none;
+}
+
+.account-page-body .nav-links a:not(.btn):hover {
+    color: #fff;
+    background: rgba(255,255,255,0.06);
+}
+
+.account-page-body .nav-links .btn,
+.account-page-body .nav-links button {
+    font-family: 'Barlow', sans-serif;
+    font-size: 12.5px;
+    font-weight: 600;
+    padding: 7px 14px;
+    border-radius: 7px;
+    border: none;
+    cursor: pointer;
+    letter-spacing: 0.02em;
+    transition: all 0.18s ease;
+    text-decoration: none;
+    line-height: 1.2;
+}
+
+.account-page-body .btn-report { background: var(--account-orange); color: #fff; }
+.account-page-body .btn-search { background: var(--account-blue); color: #fff; }
+.account-page-body .btn-primary { background: var(--account-accent); color: #fff; }
+.account-page-body .btn-delete-account { background: #d65a44; color: #fff; }
+.account-page-body .btn-logout { background: #374151; color: #e5e7eb; }
+.account-page-body .nav-links .btn:hover,
+.account-page-body .nav-links button:hover {
+    filter: brightness(1.12);
+    transform: translateY(-1px);
+}
+
+.account-page-body .container {
+    max-width: 900px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 40px 24px;
+}
+
+.account-shell {
+    width: 100%;
+}
+
+.profile-header {
+    background: var(--account-surface);
+    border: 1px solid var(--account-border);
+    border-radius: 16px;
+    padding: 32px;
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    margin-bottom: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.profile-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--account-orange), var(--account-blue));
+}
+
+.profile-avatar-wrap {
+    position: relative;
+    flex-shrink: 0;
+}
+
+.profile-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--account-surface2), var(--account-border));
+    border: 3px solid var(--account-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--account-dim);
+    letter-spacing: 0.05em;
+}
+
+.profile-status {
+    position: absolute;
+    bottom: 3px;
+    right: 3px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--account-accent);
+    border: 2px solid var(--account-surface);
+}
+
+.profile-info {
+    flex: 1;
+}
+
+.profile-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--account-text);
+    letter-spacing: 0.03em;
+    line-height: 1.1;
+}
+
+.profile-role {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 6px;
+    background: rgba(214,90,68,0.15);
+    border: 1px solid rgba(214,90,68,0.3);
+    color: #e1735f;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 20px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.info-grid {
+    background: var(--account-surface);
+    border: 1px solid var(--account-border);
+    border-radius: 16px;
+    padding: 28px 32px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px 40px;
+    margin-bottom: 20px;
+}
+
+.info-label {
+    font-size: 10.5px;
+    font-weight: 700;
+    color: var(--account-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 5px;
+}
+
+.info-value {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--account-text);
+}
+
+.info-value.empty {
+    color: var(--account-muted);
+    font-weight: 400;
+    font-style: italic;
+}
+
+.info-value.highlight {
+    color: var(--account-orange);
+}
+
+.tabs-wrapper {
+    background: var(--account-surface);
+    border: 1px solid var(--account-border);
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.tabs-header {
+    display: flex;
+    border-bottom: 1px solid var(--account-border);
+    padding: 0 24px;
+    gap: 4px;
+}
+
+.tab-btn {
+    font-family: 'Barlow', sans-serif;
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--account-muted);
+    padding: 14px 18px;
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    transition: color 0.2s, border-color 0.2s;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+}
+
+.tab-btn:hover,
+.tab-btn.active {
+    color: var(--account-text);
+}
+
+.tab-btn.active {
+    border-bottom-color: var(--account-accent);
+}
+
+.tab-content {
+    padding: 24px;
+}
+
+.stat-card {
+    background: var(--account-surface2);
+    border: 1px solid var(--account-border);
+    border-radius: 10px;
+    padding: 18px 22px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.stat-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--account-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.stat-value {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--account-text);
+    line-height: 1;
+}
+
+.reports-card {
+    background: var(--account-surface2);
+    border: 1px solid var(--account-border);
+    border-radius: 10px;
+    padding: 18px 22px;
+}
+
+.reports-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--account-dim);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+}
+
+.empty-state,
+.players-empty {
+    text-align: center;
+    padding: 32px 0;
+    color: var(--account-muted);
+    font-size: 13.5px;
+    font-weight: 500;
+}
+
+.empty-icon {
+    font-size: 24px;
+    margin-bottom: 10px;
+    opacity: 0.35;
+}
+
+.account-report-item {
+    display: grid;
+    grid-template-columns: 1.1fr 1.7fr 80px 110px;
+    gap: 1rem;
+    padding: 14px 0;
+    border-top: 1px solid var(--account-border);
+    color: var(--account-text);
+    text-decoration: none;
+}
+
+.account-report-item:first-of-type {
+    border-top: none;
+}
+
+.account-report-item strong {
+    display: block;
+    color: var(--account-text);
+}
+
+.account-report-item span,
+.account-report-item p {
+    color: var(--account-dim);
+    margin: 0;
+}
+
+.account-report-kicker {
+    color: var(--account-muted);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 4px;
+}
+
+.players-empty-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--account-surface2);
+    border: 1px solid var(--account-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 14px;
+    font-size: 22px;
+    opacity: 0.5;
+}
+
+.players-empty-text {
+    font-size: 13.5px;
+    font-weight: 500;
+    color: var(--account-muted);
+}
+
+.dark-account-player-list {
+    padding: 0;
+}
+
+.dark-account-player-list .account-player-head,
+.dark-account-player-list .account-player-row {
+    color: var(--account-text);
+}
+
+.dark-account-player-list .account-player-head {
+    border-bottom-color: var(--account-border);
+    color: var(--account-muted);
+}
+
+.dark-account-player-list .account-player-row {
+    border-bottom-color: var(--account-border);
+}
+
+.dark-account-player-list .account-player-row:hover {
+    background: rgba(255,255,255,0.04);
+}
+
+.dark-account-player-list .account-position-tags span {
+    background: var(--account-border);
+    color: var(--account-text);
+}

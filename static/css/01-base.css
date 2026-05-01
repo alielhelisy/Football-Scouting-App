@@ -1,0 +1,142 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: #d6d9de;
+    color: #1a1a1a;
+}
+
+/* ── Navbar ── */
+.navbar {
+    background: #3c3f41;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.6rem 1.5rem;
+    gap: 1rem;
+}
+.nav-brand { font-size: 1.1rem; font-weight: 700; color: #fff; }
+.personal-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
+    min-height: 56px;
+    padding: 0.3rem 0.8rem;
+    background: transparent;
+    border-radius: 3px;
+    position: relative;
+}
+.personal-photo,
+.personal-signature,
+.personal-extra-photo {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center 22%;
+    border: 2px solid #d6d9de;
+    display: block;
+}
+.nav-info  { display: flex; gap: 1rem; align-items: center; }
+.nav-user  { color: #ffd700; font-weight: 700; }
+.nav-role  { color: #aad4f5; font-size: 0.88rem; }
+.nav-links { display: flex; gap: 0.7rem; align-items: center; }
+.nav-links a { color: #ccc; text-decoration: none; font-size: 0.9rem; }
+.nav-links a:hover { color: #fff; }
+
+/* ── Container ── */
+.container { max-width: 900px; margin: 1.5rem auto; padding: 0 1rem; }
+
+/* ── Alerts ── */
+.alert {
+    padding: 0.6rem 1rem;
+    border-radius: 4px;
+    margin-bottom: 0.8rem;
+    font-size: 0.9rem;
+    border: 1px solid transparent;
+}
+.alert-success { background: #dff0d8; color: #3c763d; border-color: #d6e9c6; }
+.alert-error   { background: #f2dede; color: #a94442; border-color: #ebccd1; }
+
+/* ── Buttons ── */
+.btn {
+    padding: 0.4rem 1rem;
+    border: 1px solid #999;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 0.88rem;
+    font-weight: 400;
+    text-decoration: none;
+    display: inline-block;
+    background: #ececec;
+    color: #1a1a1a;
+    transition: background 0.1s;
+}
+.btn:hover     { background: #ddd; }
+.btn-primary   { background: #4a90d9; color: white; border-color: #3a80c9; }
+.btn-primary:hover { background: #357abd; }
+.btn-secondary { background: #ececec; color: #333; }
+.btn-danger    { background: #d9534f; color: white; border-color: #c9302c; }
+.btn-danger:hover { background: #c9302c; }
+.btn-search    { background: #5cb85c; color: white; border-color: #4cae4c; }
+.btn-report    { background: #f0ad4e; color: white; border-color: #eea236; }
+.btn-delete-account { background: #7b2d2d; color: white; border-color: #5a1f1f; }
+.btn-logout         { background: #d9534f; color: white; border-color: #c9302c; }
+.btn-sm        { padding: 0.2rem 0.5rem; font-size: 0.8rem; }
+.btn-action    { min-width: 90px; text-align: center; }
+button:disabled { opacity: 0.45; cursor: not-allowed; }
+
+/* ── Auth Card ── */
+.auth-card {
+    background: #d6d9de;
+    max-width: 420px;
+    margin: 3rem auto;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+}
+.auth-header {
+    background: #a8d5b5;
+    color: #1a1a1a;
+    font-size: 1.3rem;
+    font-weight: 700;
+    padding: 0.8rem 1.2rem;
+    border-bottom: 1px solid #8fbf9e;
+}
+.auth-form { padding: 1.2rem; }
+.sub-label { padding: 0.5rem 1.2rem 0; font-size: 0.9rem; color: #444; }
+
+.form-group { margin-bottom: 0.9rem; }
+.form-group label { display: block; margin-bottom: 0.3rem; font-size: 0.88rem; color: #333; }
+.form-group input[type="text"],
+.form-group input[type="password"],
+.form-group input[type="email"],
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 0.45rem 0.6rem;
+    border: 1px solid #aaa;
+    border-radius: 2px;
+    font-size: 0.9rem;
+    background: white;
+}
+.form-group input[type="email"]:focus,
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus { outline: 1px solid #4a90d9; border-color: #4a90d9; }
+
+.checkbox-row { display: flex; align-items: center; gap: 0.5rem; flex-direction: row; }
+.checkbox-row input { width: auto; }
+
+.auth-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+    padding-top: 0.8rem;
+    border-top: 1px solid #bbb;
+}
+.auth-buttons { display: flex; gap: 0.5rem; }
+.link-btn { color: #4a90d9; font-size: 0.88rem; text-decoration: none; }
+.link-btn:hover { text-decoration: underline; }

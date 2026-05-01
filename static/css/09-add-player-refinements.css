@@ -1,0 +1,125 @@
+/* Add Player reference-layout refinements */
+.add-player-page .navbar {
+  min-height: 56px;
+  padding: 0 28px;
+}
+
+.add-player-page .nav-user {
+  font-size: 15px;
+}
+
+.add-player-page .nav-role,
+.add-player-page .nav-role.admin-badge {
+  font-size: 10px;
+  padding: 3px 8px;
+}
+
+.add-player-page .nav-links a:not(.btn) {
+  font-size: 13.5px;
+  padding: 6px 12px;
+}
+
+.add-player-page .nav-links .btn,
+.add-player-page .nav-links button {
+  font-size: 12.5px;
+  padding: 7px 14px;
+}
+
+.add-player-page .container {
+  min-height: calc(100vh - 56px);
+  flex-direction: row;
+  justify-content: center;
+  padding: 36px 24px;
+}
+
+.add-player-page .ap-card {
+  width: 100%;
+  max-width: 580px;
+  border-radius: 18px;
+}
+
+.add-player-page .ap-header {
+  min-height: 0;
+  padding: 22px 28px 20px;
+}
+
+.add-player-page .ap-header-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 9px;
+}
+
+.add-player-page .ap-title {
+  font-size: 22px;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+
+.add-player-page .ap-section-header {
+  min-height: 0;
+  padding: 10px 28px;
+}
+
+.add-player-page .ap-section-body {
+  padding: 20px 28px;
+  gap: 16px;
+}
+
+.add-player-page .ap-row {
+  gap: 14px;
+}
+
+.add-player-page .ap-row-3 {
+  gap: 14px;
+}
+
+.add-player-page .ap-field {
+  gap: 6px;
+}
+
+.add-player-page .ap-label {
+  font-size: 10.5px;
+  letter-spacing: 0.1em;
+}
+
+.add-player-page .ap-card input[type="text"],
+.add-player-page .ap-card input[type="date"],
+.add-player-page .ap-card input[type="number"],
+.add-player-page .ap-card select {
+  min-height: 0;
+  font-size: 14px;
+  padding: 10px 14px;
+}
+
+.add-player-page .ap-footer {
+  min-height: 0;
+  padding: 16px 28px;
+}
+
+.add-player-page .ap-btn-cancel,
+.add-player-page .ap-btn-submit {
+  min-height: 0;
+}
+
+.add-player-page .ap-btn-cancel {
+  padding: 10px 22px;
+}
+
+.add-player-page .ap-btn-submit {
+  padding: 10px 26px;
+}
+
+.pitch-board {
+    min-width: 480px;
+    max-width: 700px;
+    gap: 1.2rem;
+    padding: 1.8rem 2rem;
+}
+
+.board-row {
+    display: flex;
+    justify-content: center;
+    gap: 1.2rem;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}

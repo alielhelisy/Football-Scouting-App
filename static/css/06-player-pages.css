@@ -1,0 +1,182 @@
+/* ── Player Detail ── */
+.rating-summary {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: #c8cdd5;
+    padding: 0.7rem 1rem;
+    border: 1px solid #aaa;
+    border-radius: 3px;
+    margin-bottom: 0.8rem;
+}
+.stars-large { font-size: 1.6rem; color: #c8860a; }
+.avg-label   { color: #444; font-size: 0.9rem; }
+
+.detail-card {
+    background: #d6d9de;
+    border: 1px solid #aaa;
+    border-radius: 3px;
+    padding: 1rem;
+    margin-bottom: 0.8rem;
+}
+.detail-card h3 { font-size: 0.95rem; margin-bottom: 0.7rem; font-weight: 700; }
+.review-form { max-width: 480px; }
+
+.star-select { display: flex; gap: 1.2rem; flex-wrap: wrap; margin-top: 0.3rem; }
+.star-label  { display: flex; align-items: center; gap: 0.3rem; cursor: pointer; font-size: 0.9rem; color: #c8860a; }
+
+.badge-pos {
+    display: inline-block;
+    background: #4a90d9;
+    color: white;
+    padding: 0.15rem 0.6rem;
+    border-radius: 3px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    margin-top: 0.2rem;
+}
+.scout-tag {
+    display: inline-block;
+    background: #e8f0fe;
+    color: #1a56db;
+    padding: 0.1rem 0.5rem;
+    border-radius: 3px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    border: 1px solid #c3d4f8;
+}
+.admin-badge {
+    background: #d9534f;
+    color: white;
+    padding: 0.15rem 0.6rem;
+    border-radius: 3px;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+.badge-team {
+    display: inline-block;
+    background: #5a5a5a;
+    color: white;
+    padding: 0.15rem 0.6rem;
+    border-radius: 3px;
+    font-size: 0.8rem;
+    margin-top: 0.2rem;
+    margin-left: 0.3rem;
+}
+
+/* ── Report Card ── */
+.report-card {
+    background: #d6d9de;
+    max-width: 680px;
+    margin: 2rem auto;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+}
+.report-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 0.8rem;
+}
+
+/* ── Player Card (Add / Edit Player) ── */
+.player-card {
+    background: #d6d9de;
+    max-width: 680px;
+    margin: 2rem auto;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+}
+
+.player-form {
+    padding: 0 1.2rem 1.2rem;
+}
+
+/* Section headers inside the player form */
+.section-header {
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #555;
+    background: #c8cdd5;
+    border-top: 1px solid #bbb;
+    border-bottom: 1px solid #bbb;
+    padding: 0.4rem 0;
+    margin: 0.9rem -1.2rem 0.8rem;
+    padding-left: 1.2rem;
+}
+
+.optional-toggle {
+    cursor: pointer;
+    user-select: none;
+}
+.optional-toggle:hover { background: #becad2; }
+.toggle-icon { float: right; margin-right: 1.2rem; font-size: 0.7rem; }
+
+/* Collapsible optional fields */
+.optional-fields { transition: none; }
+.optional-fields.collapsed { display: none; }
+
+/* Two-column form row */
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.8rem;
+}
+/* Three-column form row */
+.form-row-3 {
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+/* Required star */
+.required { color: #c0392b; }
+
+/* Input type number */
+.form-group input[type="number"],
+.form-group input[type="date"] {
+    width: 100%;
+    padding: 0.45rem 0.6rem;
+    border: 1px solid #aaa;
+    border-radius: 2px;
+    font-size: 0.9rem;
+    background: white;
+}
+.form-group input[type="number"]:focus,
+.form-group input[type="date"]:focus {
+    outline: 1px solid #4a90d9;
+    border-color: #4a90d9;
+}
+
+/* Create player / Save button */
+.btn-create {
+    background: #2d6a4f;
+    color: white;
+    border-color: #1b4332;
+    font-weight: 700;
+    padding: 0.45rem 1.4rem;
+}
+.btn-create:hover { background: #1b4332; }
+
+/* Action row at bottom of player form */
+.player-form-actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 0.6rem;
+    margin-top: 1.2rem;
+    padding-top: 0.8rem;
+    border-top: 1px solid #bbb;
+}
+
+/* First section header shouldn't have top border */
+.player-form > .section-header:first-of-type {
+    border-top: none;
+    margin-top: 0.6rem;
+}
+
+/* ── Wider pitch for 19 positions ── */
+.pitch-wide {
+    min-width: 560px;
+}
