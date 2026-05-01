@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Edit Comment — {{ player.name }}{% endblock %}
+
+{% block content %}
+<div class="auth-card">
+    <div class="auth-header">EDIT COMMENT</div>
+    <p class="sub-label">Player: <strong>{{ player.name }}</strong> ({{ pos_display }})</p>
+    <form method="POST" class="auth-form">
+        <div class="form-group">
+            <label for="comment">Latest Report Comment</label>
+            <textarea id="comment" name="comment" rows="5">{{ latest.comments or '' }}</textarea>
+        </div>
+        <div class="auth-actions">
+            <span></span>
+            <div class="auth-buttons">
+                <a href="{{ url_for('players_by_position', pos_key=player.position) }}"
+                   class="btn btn-secondary">Cancel</a>
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}

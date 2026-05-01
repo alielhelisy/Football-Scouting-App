@@ -1,0 +1,143 @@
+{% extends "base.html" %}
+{% block title %}Edit Player — {{ player.name }}{% endblock %}
+
+{% block content %}
+<div class="player-card">
+    <div class="auth-header">EDIT PLAYER</div>
+
+    {% if error %}
+    <div class="alert alert-error" style="margin:0.8rem 1.2rem 0;">{{ error }}</div>
+    {% endif %}
+
+    <form method="POST" class="player-form">
+
+        <!-- ── Player Info ─────────────────────────── -->
+        <div class="section-header">Player Info</div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label for="name">Display Name <span class="required">*</span></label>
+                <input type="text" id="name" name="name" required autofocus
+                       value="{{ player.name }}">
+            </div>
+            <div class="form-group">
+                <label for="gender">Gender</label>
+                <select id="gender" name="gender">
+                    {% for g in gender_options %}
+                    <option value="{{ g }}" {% if player.gender == g %}selected{% endif %}>{{ g }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label for="position">Main Position</label>
+                <select id="position" name="position">
+                    <option value="">— None —</option>
+                    {% for key, display in positions.items() %}
+                    <option value="{{ key }}" {% if player.position == key %}selected{% endif %}>{{ display }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="other_position">Other Position</label>
+                <select id="other_position" name="other_position">
+                    <option value="">— None —</option>
+                    {% for key, display in positions.items() %}
+                    <option value="{{ key }}" {% if player.other_position == key %}selected{% endif %}>{{ display }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+
+        <!-- ── Team ───────────────────────────────── -->
+        <div class="section-header">Team</div>
+
+        <div class="form-group">
+            <label for="team">Club / Team Name</label>
+            <input type="text" id="team" name="team"
+                   value="{{ player.team or '' }}">
+        </div>
+
+        <!-- ── Optional Fields ────────────────────── -->
+        <div class="section-header optional-toggle" onclick="toggleOptional()">
+            Optional Fields <span class="toggle-icon" id="toggle-icon">▼</span>
+        </div>
+
+        <div class="optional-fields" id="optional-fields">
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="first_name">First Name</label>
+                    <input type="text" id="first_name" name="first_name"
+                           value="{{ player.first_name or '' }}">
+                </div>
+                <div class="form-group">
+                    <label for="last_name">Last Name</label>
+                    <input type="text" id="last_name" name="last_name"
+                           value="{{ player.last_name or '' }}">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="nationality">Nationality</label>
+                <input type="text" id="nationality" name="nationality"
+                       value="{{ player.nationality or '' }}">
+            </div>
+
+            <div class="form-row form-row-3">
+                <div class="form-group">
+                    <label for="birthday">Birthday</label>
+                    <input type="date" id="birthday" name="birthday"
+                           value="{{ (player.birthday or '')[:10] }}">
+                </div>
+                <div class="form-group">
+                    <label for="height">Height (cm)</label>
+                    <input type="number" id="height" name="height" min="100" max="250"
+                           value="{{ player.height or '' }}">
+                </div>
+                <div class="form-group">
+                    <label for="weight">Weight (kg)</label>
+                    <input type="number" id="weight" name="weight" min="40" max="150"
+                           value="{{ player.weight or '' }}">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="foot">Preferred Foot</label>
+                <select id="foot" name="foot">
+                    <option value="">— Not specified —</option>
+                    {% for f in foot_options %}
+                    <option value="{{ f }}" {% if player.foot == f %}selected{% endif %}>{{ f }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+        </div>
+        <!-- /optional-fields -->
+
+        <!-- ── Buttons ────────────────────────────── -->
+        <div class="player-form-actions">
+            <a href="{{ url_for('players_by_position', pos_key=player.position) if player.position else url_for('dashboard') }}"
+               class="btn btn-secondary">Cancel</a>
+            <button type="submit" class="btn btn-create">SAVE CHANGES</button>
+        </div>
+
+    </form>
+</div>
+
+<script>
+function toggleOptional() {
+    var el   = document.getElementById('optional-fields');
+    var icon = document.getElementById('toggle-icon');
+    if (el.classList.contains('collapsed')) {
+        el.classList.remove('collapsed');
+        icon.textContent = '▼';
+    } else {
+        el.classList.add('collapsed');
+        icon.textContent = '▶';
+    }
+}
+</script>
+{% endblock %}

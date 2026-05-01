@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}Create Account — Scouting App{% endblock %}
+
+{% block content %}
+<div class="auth-card">
+    <div class="auth-header">CREATE ACCOUNT</div>
+    <form method="POST" class="auth-form">
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" required autofocus>
+        </div>
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" value="{{ request.form.get('name', '') }}" required>
+        </div>
+        <div class="form-group">
+            <label for="surname">Surname</label>
+            <input type="text" id="surname" name="surname" value="{{ request.form.get('surname', '') }}" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" value="{{ request.form.get('email', '') }}" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <div class="form-group">
+            <label for="confirm_password">Confirm Password</label>
+            <input type="password" id="confirm_password" name="confirm_password" required>
+        </div>
+        <div class="auth-actions">
+            <a href="{{ url_for('login') }}" class="link-btn">Back to Login</a>
+            <div class="auth-buttons">
+                <a href="{{ url_for('login') }}" class="btn btn-secondary">Cancel</a>
+                <button type="submit" class="btn btn-primary">Create</button>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}

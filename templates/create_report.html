@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% block title %}Create Report — Scouting App{% endblock %}
+
+{% block content %}
+<div class="report-card">
+    <div class="auth-header">CREATE REPORT</div>
+    <form method="POST" class="auth-form">
+
+        <div class="form-group">
+            <label for="player_id">Player</label>
+            <select id="player_id" name="player_id" required>
+                <option value="">Select a player</option>
+                {% for p in players %}
+                <option value="{{ p.id }}">
+                    {{ p.name }} ({{ p.position }}){% if session.get('role') == 'ADMIN' %} — {{ p.scout_name }}{% endif %}
+                </option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="report-row">
+            <div class="form-group">
+                <label for="rating">Rating</label>
+                <select id="rating" name="rating" required>
+                    <option value="">Select</option>
+                    {% for rating in rating_options %}
+                    <option value="{{ rating }}">{{ rating }}{% if rating_descriptions.get(rating) %} - {{ rating_descriptions.get(rating) }}{% endif %}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="minutes_played">Minutes Played</label>
+                <input type="number" id="minutes_played" name="minutes_played"
+                       value="0" min="0" max="120">
+            </div>
+
+            <div class="form-group">
+                <label for="goals_scored">Goals Scored</label>
+                <input type="number" id="goals_scored" name="goals_scored"
+                       value="0" min="0">
+            </div>
+
+            <div class="form-group">
+                <label for="received_cards">Received Cards</label>
+                <select id="received_cards" name="received_cards">
+                    {% for card in card_options %}
+                    <option value="{{ card }}">{{ card }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="rated_position">Rated Position</label>
+            <select id="rated_position" name="rated_position" required>
+                <option value="">Select</option>
+                {% for key, display in positions.items() %}
+                <option value="{{ key }}">{{ display }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="comments">Player Profile Comments</label>
+            <textarea id="comments" name="comments" rows="6"></textarea>
+        </div>
+
+        <div class="auth-actions">
+            <span></span>
+            <div class="auth-buttons">
+                <a href="{{ url_for('dashboard') }}" class="btn btn-secondary">Cancel</a>
+                <button type="submit" class="btn btn-primary">Save Report</button>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}

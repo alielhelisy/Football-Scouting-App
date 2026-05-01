@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}Scouting Dashboard{% endblock %}
+
+{% block content %}
+<div class="home-pitch">
+    {% macro position_card(key, label) %}
+    {% set count = by_pos[key]|length %}
+    <a href="{{ url_for('players_by_position', pos_key=key) }}" class="home-position-card">
+        <span class="home-position-label">{{ label }}</span>
+        <span class="home-position-count">{{ count }} player{% if count != 1 %}s{% endif %}</span>
+    </a>
+    {% endmacro %}
+
+    <div class="home-pitch-row">
+        {{ position_card('GK', 'GK') }}
+    </div>
+
+    <div class="home-pitch-row">
+        {{ position_card('CB', 'CB') }}
+    </div>
+
+    <div class="home-pitch-row">
+        {{ position_card('FB', 'FB (Walker)') }}
+        {{ position_card('FB_CANCELO', 'FB (Cancelo)') }}
+        {{ position_card('FB_DELPH', 'FB (Delph)') }}
+    </div>
+
+    <div class="home-pitch-row">
+        {{ position_card('6ER', '6er') }}
+        {{ position_card('8ER', '8er') }}
+        {{ position_card('WIDE', 'Wide player') }}
+    </div>
+
+    <div class="home-pitch-row">
+        {{ position_card('CF', 'CF') }}
+    </div>
+</div>
+{% endblock %}

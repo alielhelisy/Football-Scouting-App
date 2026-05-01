@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+{% block title %}Account Information{% endblock %}
+
+{% block content %}
+<div class="account-page">
+    <div class="account-hero">
+        <div class="account-identity">
+            <div>
+                <h2>{{ ((user.name or '') ~ ' ' ~ (user.surname or ''))|trim or user.username }}</h2>
+                <span class="account-role">{{ user.role }}</span>
+            </div>
+        </div>
+
+        <div class="account-fields">
+            <div>
+                <span>First Name</span>
+                <strong>{{ user.name or '-' }}</strong>
+            </div>
+            <div>
+                <span>Last Name</span>
+                <strong>{{ user.surname or '-' }}</strong>
+            </div>
+            <div>
+                <span>Username</span>
+                <strong>{{ user.username }}</strong>
+            </div>
+            <div>
+                <span>Email</span>
+                <strong>{{ user.email or '-' }}</strong>
+            </div>
+        </div>
+    </div>
+
+    <div class="account-tabs">
+        <a href="{{ url_for('account_info', tab='activities') }}" class="{% if tab == 'activities' %}active{% endif %}">Activities</a>
+        <a href="{{ url_for('account_info', tab='players') }}" class="{% if tab == 'players' %}active{% endif %}">Players</a>
+    </div>
+
+    {% if tab == 'activities' %}
+    <div class="account-stats">
+        <div>
+            <span>Total Reports</span>
+            <strong>{{ total_reports }}</strong>
+        </div>
+    </div>
+
+    <div class="account-activity-card">
+        <h3>Reports</h3>
+        {% if activities %}
+            {% for activity in activities %}
+            <div class="activity-report-row">
+                <div class="report-top report-player-top">
+                    <strong>{{ activity.player_name }}</strong>
+                    <span>{{ positions.get(activity.player_position, activity.player_position) }}{% if activity.player_age is not none %} | Age {{ activity.player_age }}{% endif %}</span>
+                </div>
+                <div class="report-top report-date">
+                    <span>Date</span>
+                    <strong>{{ activity.created_at[:10] }}</strong>
+                </div>
+
+                <div class="report-scout">
+                    <strong>{{ ((user.name or '') ~ ' ' ~ (user.surname or ''))|trim or user.username }}</strong>
+                    <span>{{ user.role|title }}</span>
+                </div>
+                <div class="report-comment-title">Player Profile Comments</div>
+                <div class="report-comment-text">{{ activity.comments or '-' }}</div>
+                <div class="report-rating">
+                    <span>Rating</span>
+                    <strong>{{ activity.rating|int if activity.rating == activity.rating|int else activity.rating }}</strong>
+                </div>
+            </div>
+            {% endfor %}
+        {% else %}
+            <p class="empty-cell">No reports yet.</p>
+        {% endif %}
+    </div>
+    {% else %}
+    <div class="account-activity-card">
+        <h3>My Players</h3>
+        {% if players %}
+        <div class="account-player-list">
+            <div class="account-player-head">
+                <span>Player</span>
+                <span>Main Position</span>
+                <span>Other Position</span>
+                <span>Foot</span>
+                <span>Reports</span>
+            </div>
+            {% for player in players %}
+            <a href="{{ url_for('player_detail', player_id=player.id) }}" class="account-player-row">
+                <div class="account-player-name">
+                    <strong>{{ player.name }}{% if player.player_age is not none %} <span>({{ player.player_age }})</span>{% endif %}</strong>
+                    <div class="account-position-tags">
+                        {% if player.position %}<span>{{ positions.get(player.position, player.position) }}</span>{% endif %}
+                        {% if player.other_position %}<span>{{ positions.get(player.other_position, player.other_position) }}</span>{% endif %}
+                    </div>
+                </div>
+                <div><span class="dark-position-pill">{{ positions.get(player.position, player.position) if player.position else '-' }}</span></div>
+                <div>{% if player.other_position %}<span class="dark-position-pill">{{ positions.get(player.other_position, player.other_position) }}</span>{% else %}-{% endif %}</div>
+                <div>{{ (player.foot or '-')|upper }}</div>
+                <div class="player-report-count" aria-label="{{ player.report_count }} reports">
+                    <strong>{{ player.report_count }}</strong>
+                    <span>{{ 'report' if player.report_count == 1 else 'reports' }}</span>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+        {% else %}
+            <p class="empty-cell">No players yet.</p>
+        {% endif %}
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

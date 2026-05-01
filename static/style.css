@@ -1,0 +1,1019 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: #d6d9de;
+    color: #1a1a1a;
+}
+
+/* ── Navbar ── */
+.navbar {
+    background: #3c3f41;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.6rem 1.5rem;
+    gap: 1rem;
+}
+.nav-brand { font-size: 1.1rem; font-weight: 700; color: #fff; }
+.personal-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
+    min-height: 56px;
+    padding: 0.3rem 0.8rem;
+    background: transparent;
+    border-radius: 3px;
+    position: relative;
+}
+.personal-photo,
+.personal-signature,
+.personal-extra-photo {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center 22%;
+    border: 2px solid #d6d9de;
+    display: block;
+}
+.nav-info  { display: flex; gap: 1rem; align-items: center; }
+.nav-user  { color: #ffd700; font-weight: 700; }
+.nav-role  { color: #aad4f5; font-size: 0.88rem; }
+.nav-links { display: flex; gap: 0.7rem; align-items: center; }
+.nav-links a { color: #ccc; text-decoration: none; font-size: 0.9rem; }
+.nav-links a:hover { color: #fff; }
+
+/* ── Container ── */
+.container { max-width: 900px; margin: 1.5rem auto; padding: 0 1rem; }
+
+/* ── Alerts ── */
+.alert {
+    padding: 0.6rem 1rem;
+    border-radius: 4px;
+    margin-bottom: 0.8rem;
+    font-size: 0.9rem;
+    border: 1px solid transparent;
+}
+.alert-success { background: #dff0d8; color: #3c763d; border-color: #d6e9c6; }
+.alert-error   { background: #f2dede; color: #a94442; border-color: #ebccd1; }
+
+/* ── Buttons ── */
+.btn {
+    padding: 0.4rem 1rem;
+    border: 1px solid #999;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 0.88rem;
+    font-weight: 400;
+    text-decoration: none;
+    display: inline-block;
+    background: #ececec;
+    color: #1a1a1a;
+    transition: background 0.1s;
+}
+.btn:hover     { background: #ddd; }
+.btn-primary   { background: #4a90d9; color: white; border-color: #3a80c9; }
+.btn-primary:hover { background: #357abd; }
+.btn-secondary { background: #ececec; color: #333; }
+.btn-danger    { background: #d9534f; color: white; border-color: #c9302c; }
+.btn-danger:hover { background: #c9302c; }
+.btn-search    { background: #5cb85c; color: white; border-color: #4cae4c; }
+.btn-report    { background: #f0ad4e; color: white; border-color: #eea236; }
+.btn-delete-account { background: #7b2d2d; color: white; border-color: #5a1f1f; }
+.btn-logout         { background: #d9534f; color: white; border-color: #c9302c; }
+.btn-sm        { padding: 0.2rem 0.5rem; font-size: 0.8rem; }
+.btn-action    { min-width: 90px; text-align: center; }
+button:disabled { opacity: 0.45; cursor: not-allowed; }
+
+/* ── Auth Card ── */
+.auth-card {
+    background: #d6d9de;
+    max-width: 420px;
+    margin: 3rem auto;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+}
+.auth-header {
+    background: #a8d5b5;
+    color: #1a1a1a;
+    font-size: 1.3rem;
+    font-weight: 700;
+    padding: 0.8rem 1.2rem;
+    border-bottom: 1px solid #8fbf9e;
+}
+.auth-form { padding: 1.2rem; }
+.sub-label { padding: 0.5rem 1.2rem 0; font-size: 0.9rem; color: #444; }
+
+.form-group { margin-bottom: 0.9rem; }
+.form-group label { display: block; margin-bottom: 0.3rem; font-size: 0.88rem; color: #333; }
+.form-group input[type="text"],
+.form-group input[type="password"],
+.form-group input[type="email"],
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 0.45rem 0.6rem;
+    border: 1px solid #aaa;
+    border-radius: 2px;
+    font-size: 0.9rem;
+    background: white;
+}
+.form-group input[type="email"]:focus,
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus { outline: 1px solid #4a90d9; border-color: #4a90d9; }
+
+.checkbox-row { display: flex; align-items: center; gap: 0.5rem; flex-direction: row; }
+.checkbox-row input { width: auto; }
+
+.auth-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+    padding-top: 0.8rem;
+    border-top: 1px solid #bbb;
+}
+.auth-buttons { display: flex; gap: 0.5rem; }
+.link-btn { color: #4a90d9; font-size: 0.88rem; text-decoration: none; }
+.link-btn:hover { text-decoration: underline; }
+
+/* ── Dashboard Pitch ── */
+.pitch-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 0;
+}
+.pitch {
+    background: #5a8a5a;
+    border: 3px solid #fff;
+    border-radius: 8px;
+    padding: 2rem 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+    min-width: 400px;
+}
+.pitch-row {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+.position-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 130px;
+    height: 70px;
+    background: #d6d9de;
+    border: 2px solid #aaa;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #1a1a1a;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.15s, transform 0.1s;
+    box-shadow: 2px 2px 4px rgba(0,0,0,0.25);
+}
+.position-btn:hover { background: #c0c4cc; transform: translateY(-2px); }
+.pos-count { font-size: 0.72rem; font-weight: 400; color: #555; margin-top: 0.2rem; }
+
+/* ── Page Header ── */
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.8rem;
+    background: #c8cdd5;
+    padding: 0.6rem 0.8rem;
+    border: 1px solid #aaa;
+    border-radius: 3px;
+}
+.page-header h2 { font-size: 1rem; font-weight: 700; }
+
+/* ── Table ── */
+.table-wrapper {
+    border: 1px solid #aaa;
+    border-radius: 3px;
+    background: white;
+    min-height: 200px;
+}
+.players-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.players-table th {
+    background: #c8cdd5;
+    padding: 0.45rem 0.7rem;
+    text-align: left;
+    font-size: 0.85rem;
+    font-weight: 700;
+    border-bottom: 1px solid #aaa;
+}
+.players-table td {
+    padding: 0.4rem 0.7rem;
+    font-size: 0.88rem;
+    border-bottom: 1px solid #eee;
+}
+.players-table tr:last-child td { border-bottom: none; }
+.player-row { cursor: pointer; }
+.player-row:hover { background: #e8ecf0; }
+.player-row.selected { background: #b8d4f0 !important; }
+.empty-cell { text-align: center; color: #888; padding: 1.5rem !important; font-style: italic; }
+.stars-cell { color: #c8860a; font-size: 1rem; }
+
+/* ── Action Bar (bottom buttons like Java app) ── */
+.action-bar {
+    display: flex;
+    gap: 0.5rem;
+    padding: 0.7rem 0.5rem;
+    background: #c8cdd5;
+    border: 1px solid #aaa;
+    border-top: none;
+    border-radius: 0 0 3px 3px;
+    flex-wrap: wrap;
+}
+.action-bar form { display: inline; }
+
+/* ── Search ── */
+.search-form {
+    background: #c8cdd5;
+    border: 1px solid #aaa;
+    border-radius: 3px;
+    padding: 0.7rem 1rem;
+    margin-bottom: 0.5rem;
+}
+.search-fields {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(180px, 1fr));
+    gap: 1rem;
+    margin-bottom: 0.8rem;
+}
+.search-fields label {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    font-size: 0.88rem;
+    font-weight: 700;
+}
+.search-fields input {
+    width: 100%;
+    padding: 0.45rem 0.55rem;
+    border: 1px solid #aaa;
+    border-radius: 2px;
+    font-size: 0.92rem;
+}
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+.checkbox-label { font-weight: 700; font-size: 0.88rem; }
+.checkbox-item {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.88rem;
+    cursor: pointer;
+}
+
+@media (max-width: 700px) {
+    .search-fields {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ── Player Detail ── */
+.rating-summary {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: #c8cdd5;
+    padding: 0.7rem 1rem;
+    border: 1px solid #aaa;
+    border-radius: 3px;
+    margin-bottom: 0.8rem;
+}
+.stars-large { font-size: 1.6rem; color: #c8860a; }
+.avg-label   { color: #444; font-size: 0.9rem; }
+
+.detail-card {
+    background: #d6d9de;
+    border: 1px solid #aaa;
+    border-radius: 3px;
+    padding: 1rem;
+    margin-bottom: 0.8rem;
+}
+.detail-card h3 { font-size: 0.95rem; margin-bottom: 0.7rem; font-weight: 700; }
+.review-form { max-width: 480px; }
+
+.star-select { display: flex; gap: 1.2rem; flex-wrap: wrap; margin-top: 0.3rem; }
+.star-label  { display: flex; align-items: center; gap: 0.3rem; cursor: pointer; font-size: 0.9rem; color: #c8860a; }
+
+.badge-pos {
+    display: inline-block;
+    background: #4a90d9;
+    color: white;
+    padding: 0.15rem 0.6rem;
+    border-radius: 3px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    margin-top: 0.2rem;
+}
+.scout-tag {
+    display: inline-block;
+    background: #e8f0fe;
+    color: #1a56db;
+    padding: 0.1rem 0.5rem;
+    border-radius: 3px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    border: 1px solid #c3d4f8;
+}
+.admin-badge {
+    background: #d9534f;
+    color: white;
+    padding: 0.15rem 0.6rem;
+    border-radius: 3px;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+.badge-team {
+    display: inline-block;
+    background: #5a5a5a;
+    color: white;
+    padding: 0.15rem 0.6rem;
+    border-radius: 3px;
+    font-size: 0.8rem;
+    margin-top: 0.2rem;
+    margin-left: 0.3rem;
+}
+
+/* ── Report Card ── */
+.report-card {
+    background: #d6d9de;
+    max-width: 680px;
+    margin: 2rem auto;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+}
+.report-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 0.8rem;
+}
+
+/* ── Player Card (Add / Edit Player) ── */
+.player-card {
+    background: #d6d9de;
+    max-width: 680px;
+    margin: 2rem auto;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+}
+
+.player-form {
+    padding: 0 1.2rem 1.2rem;
+}
+
+/* Section headers inside the player form */
+.section-header {
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #555;
+    background: #c8cdd5;
+    border-top: 1px solid #bbb;
+    border-bottom: 1px solid #bbb;
+    padding: 0.4rem 0;
+    margin: 0.9rem -1.2rem 0.8rem;
+    padding-left: 1.2rem;
+}
+
+.optional-toggle {
+    cursor: pointer;
+    user-select: none;
+}
+.optional-toggle:hover { background: #becad2; }
+.toggle-icon { float: right; margin-right: 1.2rem; font-size: 0.7rem; }
+
+/* Collapsible optional fields */
+.optional-fields { transition: none; }
+.optional-fields.collapsed { display: none; }
+
+/* Two-column form row */
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.8rem;
+}
+/* Three-column form row */
+.form-row-3 {
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+/* Required star */
+.required { color: #c0392b; }
+
+/* Input type number */
+.form-group input[type="number"],
+.form-group input[type="date"] {
+    width: 100%;
+    padding: 0.45rem 0.6rem;
+    border: 1px solid #aaa;
+    border-radius: 2px;
+    font-size: 0.9rem;
+    background: white;
+}
+.form-group input[type="number"]:focus,
+.form-group input[type="date"]:focus {
+    outline: 1px solid #4a90d9;
+    border-color: #4a90d9;
+}
+
+/* Create player / Save button */
+.btn-create {
+    background: #2d6a4f;
+    color: white;
+    border-color: #1b4332;
+    font-weight: 700;
+    padding: 0.45rem 1.4rem;
+}
+.btn-create:hover { background: #1b4332; }
+
+/* Action row at bottom of player form */
+.player-form-actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 0.6rem;
+    margin-top: 1.2rem;
+    padding-top: 0.8rem;
+    border-top: 1px solid #bbb;
+}
+
+/* First section header shouldn't have top border */
+.player-form > .section-header:first-of-type {
+    border-top: none;
+    margin-top: 0.6rem;
+}
+
+/* ── Wider pitch for 19 positions ── */
+.pitch-wide {
+    min-width: 560px;
+}
+
+/* ── Tactical Board (dashboard) ── */
+.pitch-board {
+    min-width: 480px;
+    max-width: 700px;
+    gap: 1.2rem;
+    padding: 1.8rem 2rem;
+}
+
+.board-row {
+    display: flex;
+    justify-content: center;
+    gap: 1.2rem;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+
+/* A zone groups all cards for one position + the "+" button */
+.board-zone {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Individual player card on the pitch */
+.board-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 100px;
+    padding: 0.45rem 0.8rem;
+    background: #d6d9de;
+    border: 2px solid #aaa;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #1a1a1a;
+    box-shadow: 2px 2px 4px rgba(0,0,0,0.25);
+    transition: background 0.12s, transform 0.1s;
+    cursor: pointer;
+}
+.board-card:hover { background: #c0c4cc; transform: translateY(-2px); }
+
+.board-pos  { font-size: 0.82rem; font-weight: 700; color: #1a1a1a; }
+.board-name { font-size: 0.78rem; color: #333; margin-top: 1px; }
+
+.board-scout {
+    font-size: 0.68rem;
+    color: #1a56db;
+    margin-top: 2px;
+}
+
+/* Empty slot */
+.board-empty { opacity: 0.5; border-style: dashed; }
+.board-empty:hover { background: #d6d9de; transform: none; }
+.empty-slot { font-style: italic; color: #888; }
+
+/* "+" add button beside each zone */
+.board-add {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    background: rgba(0,0,0,0.18);
+    color: #fff;
+    border-radius: 50%;
+    font-size: 1rem;
+    font-weight: 700;
+    text-decoration: none;
+    line-height: 1;
+    transition: background 0.12s;
+    flex-shrink: 0;
+}
+.board-add:hover { background: rgba(0,0,0,0.35); }
+
+/* ── Player Profile bio grid ── */
+.bio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 0.5rem 1.2rem;
+}
+.bio-item {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.88rem;
+}
+.bio-label {
+    font-size: 0.75rem;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.1rem;
+}
+.bio-value {
+    font-weight: 600;
+    color: #1a1a1a;
+}
+
+/* Home position board */
+.home-pitch {
+    width: min(860px, 100%);
+    min-height: 620px;
+    margin: 0 auto;
+    padding: 1.8rem 0.8rem;
+    background: #5a8a5a;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1.4rem;
+}
+
+.home-pitch-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: clamp(1.5rem, 7vw, 4.5rem);
+    flex-wrap: wrap;
+}
+
+.home-position-card {
+    width: 160px;
+    height: 84px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #d6d9de;
+    border: 2px solid #a7adb5;
+    border-radius: 5px;
+    color: #111;
+    text-decoration: none;
+    box-shadow: 3px 4px 7px rgba(0,0,0,0.28);
+    transition: background 0.12s, transform 0.1s, box-shadow 0.12s;
+}
+
+.home-position-card:hover {
+    background: #c9ced6;
+    transform: translateY(-2px);
+    box-shadow: 4px 6px 10px rgba(0,0,0,0.32);
+}
+
+.home-position-label {
+    font-size: 1.2rem;
+    font-weight: 800;
+    line-height: 1.1;
+}
+
+.home-position-count {
+    margin-top: 0.55rem;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+@media (max-width: 640px) {
+    .home-pitch {
+        min-height: auto;
+        padding: 1rem;
+        gap: 1rem;
+    }
+
+    .home-pitch-row {
+        gap: 1rem;
+    }
+
+    .home-position-card {
+        width: min(160px, 100%);
+        height: 78px;
+    }
+}
+.detail-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.detail-header-actions form {
+    display: inline;
+}
+.table-actions {
+    text-align: right;
+    white-space: nowrap;
+}
+
+.table-actions form {
+    display: inline;
+}
+.role-form {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.role-form select {
+    padding: 0.25rem 0.4rem;
+    border: 1px solid #aaa;
+    border-radius: 3px;
+    background: white;
+}
+.protected-label {
+    color: #666;
+    font-size: 0.82rem;
+    font-weight: 700;
+}
+.account-page {
+    margin: -1.5rem -1rem 0;
+}
+
+.account-hero {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 2rem;
+    align-items: center;
+    background: #d6d6d6;
+    padding: 2rem 2.8rem;
+}
+
+.account-identity {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    min-height: 112px;
+}
+
+.account-identity h2 {
+    font-size: 1.45rem;
+    margin-bottom: 0.3rem;
+}
+
+.account-role {
+    color: #666;
+    font-weight: 700;
+}
+
+.account-fields {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(180px, 1fr));
+    gap: 1.5rem 4rem;
+    max-width: 720px;
+}
+
+.account-fields span,
+.activity-comment span,
+.activity-rating span,
+.activity-kind span,
+.activity-user span,
+.activity-player span,
+.account-stats span {
+    display: block;
+    color: #777;
+    font-weight: 700;
+    text-transform: none;
+}
+
+.account-fields strong {
+    display: block;
+    margin-top: 0.2rem;
+    font-size: 1rem;
+}
+
+.account-tabs {
+    display: flex;
+    gap: 1.6rem;
+    padding: 0.8rem 2.4rem 0;
+    border-bottom: 2px solid #d0d0d0;
+    background: #f5f5f5;
+}
+
+.account-tabs a {
+    padding: 0 0 0.65rem;
+    color: #777;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.account-tabs .active {
+    color: #111;
+    border-bottom: 2px solid #111;
+}
+
+.account-stats {
+    display: grid;
+    grid-template-columns: 1fr;
+    margin: 0.8rem 2.4rem;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+}
+
+.account-stats div {
+    padding: 0.6rem 0.8rem;
+    border-right: 1px solid #ddd;
+}
+
+.account-stats div:last-child {
+    border-right: none;
+}
+
+.account-stats strong {
+    display: block;
+    font-size: 1.35rem;
+}
+
+.account-activity-card {
+    margin: 0.8rem 2.4rem 1.5rem;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.12);
+}
+
+.account-activity-card h3 {
+    padding: 0.8rem;
+    font-size: 1rem;
+}
+
+.activity-row {
+    display: grid;
+    grid-template-columns: 120px 220px minmax(280px, 1fr) 180px 90px;
+    gap: 1rem;
+    align-items: center;
+    padding: 0.8rem;
+    border-top: 1px solid #e2e2e2;
+}
+
+.activity-user {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.activity-comment p {
+    margin-top: 0.25rem;
+    color: #333;
+}
+
+@media (max-width: 900px) {
+    .account-hero,
+    .activity-row,
+    .account-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .account-stats div {
+        border-right: none;
+        border-bottom: 1px solid #ddd;
+    }
+}
+.report-layout {
+    min-height: 86px;
+    align-items: center;
+}
+
+.report-layout .activity-kind strong,
+.report-layout .activity-user strong,
+.report-layout .activity-player strong,
+.report-layout .activity-rating strong {
+    font-size: 1rem;
+}
+
+.report-layout .activity-user,
+.report-layout .activity-player,
+.report-layout .activity-rating {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.15rem;
+}
+
+.report-layout .activity-comment p {
+    max-width: 560px;
+    line-height: 1.35;
+}
+.activity-report-row {
+    display: grid;
+    grid-template-columns: 180px minmax(320px, 1fr) 90px 130px;
+    grid-template-areas:
+        "player comment rating date"
+        "scout comment rating date";
+    gap: 0.8rem 1.2rem;
+    padding: 0.85rem 1rem;
+    border-top: 1px solid #dedede;
+    align-items: center;
+}
+
+.report-player-top { grid-area: player; }
+.report-date {
+    grid-area: date;
+    align-self: center;
+    justify-self: end;
+    min-width: 112px;
+    padding: 0.35rem 0.6rem;
+    background: #f2f3f5;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    text-align: left;
+}
+.report-scout { grid-area: scout; }
+.report-comment-title { display: none; }
+.report-comment-text { grid-area: comment; line-height: 1.35; color: #252a33; }
+.report-rating {
+    grid-area: rating;
+    align-self: center;
+}
+
+.report-top span,
+.report-scout span,
+.report-rating span,
+.report-date span {
+    display: block;
+    color: #777;
+    font-weight: 700;
+}
+
+.report-top strong,
+.report-scout strong,
+.report-rating strong,
+.report-date strong {
+    display: block;
+    font-size: 1rem;
+}
+
+@media (max-width: 900px) {
+    .activity-report-row {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "player"
+            "scout"
+            "comment"
+            "rating"
+            "date";
+    }
+
+    .report-date {
+        justify-self: start;
+    }
+}
+.account-player-list {
+    padding: 0.4rem 0.8rem 0.8rem;
+}
+
+.account-player-head,
+.account-player-row {
+    display: grid;
+    grid-template-columns: minmax(220px, 1.35fr) minmax(140px, 1fr) minmax(150px, 1fr) 120px 150px;
+    gap: 1rem;
+    align-items: center;
+}
+
+.account-player-head {
+    padding: 0.7rem 0.6rem;
+    color: #777;
+    font-weight: 700;
+    border-bottom: 1px solid #e2e2e2;
+}
+
+.account-player-row {
+    padding: 0.8rem 0.6rem;
+    min-height: 76px;
+    border-bottom: 1px solid #e8e8e8;
+    color: #111827;
+    text-decoration: none;
+}
+
+.account-player-row:hover {
+    background: #f5f7fa;
+}
+
+.account-player-name strong {
+    font-size: 1rem;
+}
+
+.account-player-name strong span {
+    color: #777;
+}
+
+.account-position-tags {
+    display: flex;
+    gap: 0.35rem;
+    flex-wrap: wrap;
+    margin-top: 0.25rem;
+}
+
+.account-position-tags span {
+    display: inline-flex;
+    align-items: center;
+    min-height: 24px;
+    padding: 0.1rem 0.7rem;
+    border-radius: 14px;
+    background: #e2e2e2;
+    color: #111827;
+    font-size: 0.78rem;
+    font-weight: 700;
+}
+
+.dark-position-pill {
+    display: inline-flex;
+    align-items: center;
+    min-height: 26px;
+    padding: 0.15rem 0.8rem;
+    border-radius: 14px;
+    background: #111620;
+    color: white;
+    font-size: 0.78rem;
+    font-weight: 800;
+}
+
+.player-report-count {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    justify-content: flex-start;
+}
+
+.player-report-count strong {
+    min-width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #111827;
+    color: white;
+    font-size: 1rem;
+}
+
+.player-report-count span {
+    color: #777;
+    font-weight: 700;
+}
+
+@media (max-width: 900px) {
+    .account-player-head {
+        display: none;
+    }
+
+    .account-player-row {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+    }
+}

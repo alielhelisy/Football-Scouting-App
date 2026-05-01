@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block title %}Admin Accounts{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h2>Accounts</h2>
+    <div class="detail-header-actions">
+        <a href="{{ url_for('admin_add_account') }}" class="btn btn-primary">Add Account</a>
+        <a href="{{ url_for('dashboard') }}" class="btn btn-secondary">&#8592; Back</a>
+    </div>
+</div>
+
+<div class="table-wrapper">
+    <table class="players-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Username</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Players</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if users %}
+                {% for user in users %}
+                <tr>
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.username }}</td>
+                    <td>{{ ((user.name or "") ~ " " ~ (user.surname or ""))|trim or "-" }}</td>
+                    <td>{{ user.email or "-" }}</td>
+                    <td>
+                        {% if user.username|lower == 'admin' %}
+                            <span class="admin-badge">MAIN ADMIN</span>
+                        {% else %}
+                            <form method="POST" action="{{ url_for('admin_update_account_role', user_id=user.id) }}" class="role-form">
+                                <select name="role">
+                                    <option value="SCOUT" {% if user.role == 'SCOUT' %}selected{% endif %}>SCOUT</option>
+                                    <option value="ADMIN" {% if user.role == 'ADMIN' %}selected{% endif %}>ADMIN</option>
+                                </select>
+                                <button type="submit" class="btn btn-sm btn-primary">Save</button>
+                            </form>
+                        {% endif %}
+                    </td>
+                    <td>{{ user.player_count }}</td>
+                    <td class="table-actions">
+                        {% if user.username|lower == 'admin' %}
+                            <span class="protected-label">Protected</span>
+                        {% else %}
+                            <form method="POST"
+                                  action="{{ url_for('admin_delete_account', user_id=user.id) }}"
+                                  onsubmit="return confirm('Delete account {{ user.username }}? This will remove all players and reports for this account permanently.')">
+                                <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                            </form>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            {% else %}
+                <tr><td colspan="7" class="empty-cell">No other accounts found.</td></tr>
+            {% endif %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

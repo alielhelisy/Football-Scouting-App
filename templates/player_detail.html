@@ -1,0 +1,129 @@
+{% extends "base.html" %}
+{% block title %}{{ player.name }} — Details{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <div>
+        <h2>{{ player.name }}</h2>
+        {% if player.position %}
+        <span class="badge-pos">{{ positions.get(player.position, player.position) }}</span>
+        {% endif %}
+        {% if player.other_position %}
+        <span class="badge-pos" style="background:#6a9fd8;">{{ positions.get(player.other_position, player.other_position) }}</span>
+        {% endif %}
+        {% if player.team %}<span class="badge-team">{{ player.team }}</span>{% endif %}
+        {% if admin %}<span class="scout-tag">&#128100; {{ player.scout_name }}</span>{% endif %}
+    </div>
+    <div class="detail-header-actions">
+        <a href="{{ url_for('edit_player', player_id=player.id) }}" class="btn btn-primary">Edit Player</a>
+        <form method="POST"
+              action="{{ url_for('delete_player', player_id=player.id) }}"
+              onsubmit="return confirm('Delete this player? This will remove all reports for this player permanently.')">
+            <button type="submit" class="btn btn-danger">Delete Player</button>
+        </form>
+        <a href="{{ url_for('players_by_position', pos_key=player.position) if player.position else url_for('dashboard') }}"
+           class="btn btn-secondary">&#8592; Back</a>
+    </div>
+</div>
+
+<!-- ── Player Bio Card ──────────────────────────── -->
+{% set has_bio = player.first_name or player.last_name or player.nationality or player.birthday or player.height or player.weight or player.foot or player.gender %}
+{% if has_bio %}
+<div class="detail-card" style="margin-bottom:0.8rem;">
+    <h3>Player Profile</h3>
+    <div class="bio-grid">
+        {% if player.first_name or player.last_name %}
+        <div class="bio-item">
+            <span class="bio-label">Full Name</span>
+            <span class="bio-value">{{ player.first_name or '' }} {{ player.last_name or '' }}</span>
+        </div>
+        {% endif %}
+        {% if player.gender %}
+        <div class="bio-item">
+            <span class="bio-label">Gender</span>
+            <span class="bio-value">{{ player.gender }}</span>
+        </div>
+        {% endif %}
+        {% if player.nationality %}
+        <div class="bio-item">
+            <span class="bio-label">Nationality</span>
+            <span class="bio-value">{{ player.nationality }}</span>
+        </div>
+        {% endif %}
+        {% if player.birthday %}
+        <div class="bio-item">
+            <span class="bio-label">Birthday</span>
+            <span class="bio-value">{{ player.birthday[:10] }}</span>
+        </div>
+        {% endif %}
+        {% if player.height %}
+        <div class="bio-item">
+            <span class="bio-label">Height</span>
+            <span class="bio-value">{{ player.height }} cm</span>
+        </div>
+        {% endif %}
+        {% if player.weight %}
+        <div class="bio-item">
+            <span class="bio-label">Weight</span>
+            <span class="bio-value">{{ player.weight }} kg</span>
+        </div>
+        {% endif %}
+        {% if player.foot %}
+        <div class="bio-item">
+            <span class="bio-label">Preferred Foot</span>
+            <span class="bio-value">{{ player.foot }}</span>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endif %}
+
+<!-- ── Rating Summary ───────────────────────────── -->
+<div class="rating-summary">
+    <span class="avg-label">{{ avg_stars|int if avg_stars == avg_stars|int else avg_stars }} &nbsp;({{ reports|length }} report{{ 's' if reports|length != 1 }})</span>
+    <a href="{{ url_for('create_report') }}" class="btn btn-report" style="margin-left:auto">+ Create Report</a>
+</div>
+
+<!-- ── Report History ───────────────────────────── -->
+<div class="detail-card">
+    <h3>Report History</h3>
+    {% if reports %}
+    <table class="players-table">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Rating</th>
+                <th>Minutes</th>
+                <th>Goals</th>
+                <th>Cards</th>
+                <th>Position</th>
+                <th>Comments</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for r in reports %}
+            <tr>
+                <td>{{ r.created_at[:10] }}</td>
+                <td>{{ r.rating|int if r.rating == r.rating|int else r.rating }}</td>
+                <td>{{ r.minutes_played }}'</td>
+                <td>{{ r.goals_scored }}</td>
+                <td>{{ r.received_cards }}</td>
+                <td>{{ positions.get(r.rated_position, r.rated_position) }}</td>
+                <td>{{ r.comments or '—' }}</td>
+                <td>
+                    <form method="POST"
+                          action="{{ url_for('delete_report', player_id=player.id, report_id=r.id) }}"
+                          onsubmit="return confirm('Delete this report?')">
+                        <button type="submit" class="btn btn-sm btn-danger">&#x2715;</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p class="empty-cell">No reports yet. Use <strong>Create Report</strong> to add one.</p>
+    {% endif %}
+</div>
+{% endblock %}

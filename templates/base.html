@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Scouting App{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    {% if session.get('username') %}
+    <nav class="navbar">
+        <div class="nav-brand personal-brand" aria-label="Profile signature">
+            <img class="personal-photo"
+                 src="{{ url_for('static', filename='profile_photo.jpg') }}"
+                 alt="Profile photo">
+            <img class="personal-signature"
+                 src="{{ url_for('static', filename='second_photo.jpg') }}"
+                 alt="Second photo">
+            <img class="personal-extra-photo"
+                 src="{{ url_for('static', filename='third_photo.jpg') }}"
+                 alt="Third photo">
+        </div>
+        <div class="nav-info">
+            <span class="nav-user">{{ session['username'] }}</span>
+            {% if session.get('role') == 'ADMIN' %}
+                <span class="nav-role admin-badge">&#9733; ADMIN</span>
+            {% else %}
+                <span class="nav-role">Role: SCOUT</span>
+            {% endif %}
+        </div>
+        <div class="nav-links">
+            <a href="{{ url_for('dashboard') }}">Home</a>
+            <a href="{{ url_for('account_info') }}">Account</a>
+            <a href="{{ url_for('create_report') }}" class="btn btn-report">Create Report</a>
+            <a href="{{ url_for('search') }}" class="btn btn-search">Search</a>
+            {% if session.get('role') == 'ADMIN' %}<a href="{{ url_for('admin_accounts') }}" class="btn btn-primary">Accounts</a>{% endif %}
+            <form method="POST" action="{{ url_for('delete_account') }}" style="display:inline"
+                  onsubmit="return confirm('Delete your account? This will remove all your players and reports permanently.')">
+                <button type="submit" class="btn btn-delete-account">Delete Account</button>
+            </form>
+            <a href="{{ url_for('logout') }}" class="btn btn-logout">Logout</a>
+        </div>
+    </nav>
+    {% endif %}
+
+    <main class="container">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">{{ message }}</div>
+            {% endfor %}
+        {% endwith %}
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>
