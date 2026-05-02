@@ -180,3 +180,427 @@
 .pitch-wide {
     min-width: 560px;
 }
+
+/* Dark player profile page */
+.player-profile-page {
+    --profile-bg: #0f1117;
+    --profile-surface: #161b27;
+    --profile-surface-2: #1c2232;
+    --profile-surface-3: #111622;
+    --profile-border: #232a3a;
+    --profile-accent: #28a865;
+    --profile-orange: #d79536;
+    --profile-blue: #3184cf;
+    --profile-red: #d65a44;
+    --profile-text: #e5e7eb;
+    --profile-muted: #6b7280;
+    --profile-dim: #9ca3af;
+    background: var(--profile-bg);
+    color: var(--profile-text);
+    font-family: 'Barlow', 'Segoe UI', sans-serif;
+}
+
+.player-profile-page .navbar {
+    background: #0f1117;
+    border-bottom: 1px solid #1e2230;
+    min-height: 56px;
+    padding: 0 28px;
+    box-shadow: none;
+}
+
+.player-profile-page .personal-brand { display: none; }
+
+.player-profile-page .nav-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.player-profile-page .nav-user {
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--profile-orange);
+    letter-spacing: 0.02em;
+}
+
+.player-profile-page .nav-role,
+.player-profile-page .nav-role.admin-badge {
+    background: var(--profile-red);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 4px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.player-profile-page .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.player-profile-page .nav-links a:not(.btn) {
+    color: #9ca3af;
+    font-size: 13.5px;
+    font-weight: 500;
+    padding: 6px 12px;
+    border-radius: 6px;
+    text-decoration: none;
+}
+
+.player-profile-page .nav-links a:not(.btn):hover {
+    color: #fff;
+    background: rgba(255,255,255,0.06);
+}
+
+.player-profile-page .nav-links .btn,
+.player-profile-page .nav-links button {
+    font-family: 'Barlow', sans-serif;
+    font-size: 12.5px;
+    font-weight: 600;
+    padding: 7px 14px;
+    border-radius: 7px;
+    border: none;
+    cursor: pointer;
+    letter-spacing: 0.02em;
+    transition: all 0.18s ease;
+    text-decoration: none;
+    line-height: 1.2;
+    white-space: nowrap;
+}
+
+.player-profile-page .btn-report { background: var(--profile-orange); color: #fff; }
+.player-profile-page .btn-search { background: var(--profile-blue); color: #fff; }
+.player-profile-page .btn-primary { background: var(--profile-accent); color: #fff; }
+.player-profile-page .btn-delete-account { background: var(--profile-red); color: #fff; }
+.player-profile-page .btn-logout { background: #374151; color: #e5e7eb; }
+.player-profile-page .nav-links .btn:hover,
+.player-profile-page .nav-links button:hover {
+    filter: brightness(1.12);
+    transform: translateY(-1px);
+}
+
+.player-profile-page .container {
+    max-width: none;
+    min-height: calc(100vh - 56px);
+    margin: 0;
+    padding: 36px 24px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    background: radial-gradient(ellipse at 50% 0%, #1a1f2e 0%, #0f1117 65%);
+}
+
+.player-profile-page .profile-page-wrap {
+    width: 100%;
+    max-width: 820px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.player-profile-page .player-header-card,
+.player-profile-page .profile-card-dark,
+.player-profile-page .reports-card-dark {
+    background: var(--profile-surface);
+    border: 1px solid var(--profile-border);
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.player-profile-page .player-header-card {
+    padding: 22px 26px;
+    position: relative;
+}
+
+.player-profile-page .player-header-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--profile-blue), var(--profile-accent));
+}
+
+.player-profile-page .player-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.player-profile-page .player-left {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.player-profile-page .player-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 30px;
+    font-weight: 800;
+    color: var(--profile-text);
+    letter-spacing: 0.04em;
+    line-height: 1;
+    margin: 0;
+}
+
+.player-profile-page .player-tags,
+.player-profile-page .player-actions {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.player-profile-page .profile-pos-tag {
+    font-size: 11px;
+    font-weight: 800;
+    padding: 4px 10px;
+    border-radius: 6px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.player-profile-page .profile-pos-tag.def {
+    background: rgba(49,132,207,0.18);
+    color: #78b6ec;
+    border: 1px solid rgba(49,132,207,0.35);
+}
+
+.player-profile-page .profile-pos-tag.mid {
+    background: rgba(40,168,101,0.15);
+    color: #74d89e;
+    border: 1px solid rgba(40,168,101,0.3);
+}
+
+.player-profile-page .profile-meta-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: var(--profile-surface-2);
+    border: 1px solid var(--profile-border);
+    border-radius: 6px;
+    padding: 4px 10px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--profile-dim);
+    white-space: nowrap;
+}
+
+.player-profile-page .profile-action,
+.player-profile-page .profile-create-report {
+    font-family: 'Barlow', sans-serif;
+    font-size: 12.5px;
+    font-weight: 700;
+    padding: 8px 16px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.18s ease;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+}
+
+.player-profile-page .profile-action.edit { background: var(--profile-blue); color: #fff; }
+.player-profile-page .profile-action.danger { background: var(--profile-red); color: #fff; }
+.player-profile-page .profile-action.back {
+    background: transparent;
+    color: var(--profile-dim);
+    border: 1px solid var(--profile-border);
+}
+
+.player-profile-page .profile-action:hover,
+.player-profile-page .profile-create-report:hover {
+    filter: brightness(1.12);
+    transform: translateY(-1px);
+}
+
+.player-profile-page .profile-action.back:hover {
+    background: var(--profile-surface-2);
+    color: var(--profile-text);
+    filter: none;
+}
+
+.player-profile-page .profile-card-header,
+.player-profile-page .reports-header-dark {
+    padding: 12px 22px;
+    background: var(--profile-surface-3);
+    border-bottom: 1px solid var(--profile-border);
+}
+
+.player-profile-page .profile-card-header h2,
+.player-profile-page .reports-header-dark h2 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--profile-text);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.player-profile-page .profile-grid-dark {
+    padding: 22px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px 28px;
+}
+
+.player-profile-page .profile-field-label {
+    font-size: 9.5px;
+    font-weight: 800;
+    color: var(--profile-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    margin-bottom: 4px;
+}
+
+.player-profile-page .profile-field-value {
+    font-size: 14.5px;
+    font-weight: 600;
+    color: var(--profile-text);
+}
+
+.player-profile-page .empty-value,
+.player-profile-page .profile-field-value:has(.empty-value) {
+    color: var(--profile-muted);
+    font-style: italic;
+    font-weight: 400;
+}
+
+.player-profile-page .reports-header-dark {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.player-profile-page .reports-title-wrap {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+}
+
+.player-profile-page .reports-count {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--profile-muted);
+    background: var(--profile-surface-2);
+    border: 1px solid var(--profile-border);
+    border-radius: 20px;
+    padding: 2px 8px;
+}
+
+.player-profile-page .profile-create-report {
+    font-size: 12px;
+    padding: 7px 14px;
+    border-radius: 7px;
+    background: var(--profile-orange);
+    color: #fff;
+}
+
+.player-profile-page .reports-body-dark {
+    padding: 20px 22px;
+}
+
+.player-profile-page .profile-empty-state {
+    text-align: center;
+    padding: 32px 0;
+    color: var(--profile-muted);
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.player-profile-page .profile-empty-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--profile-surface-2);
+    border: 1px solid var(--profile-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 12px;
+    opacity: 0.6;
+}
+
+.player-profile-page .profile-empty-state a {
+    color: var(--profile-orange);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.player-profile-page .profile-empty-state a:hover {
+    text-decoration: underline;
+}
+
+.player-profile-page .profile-report-table-wrap {
+    overflow-x: auto;
+}
+
+.player-profile-page .profile-report-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+}
+
+.player-profile-page .profile-report-table th {
+    text-align: left;
+    padding: 10px 12px;
+    font-size: 10px;
+    color: var(--profile-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    border-bottom: 1px solid var(--profile-border);
+}
+
+.player-profile-page .profile-report-table td {
+    padding: 11px 12px;
+    color: var(--profile-dim);
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    vertical-align: top;
+}
+
+.player-profile-page .profile-report-table tr:last-child td {
+    border-bottom: 0;
+}
+
+.player-profile-page .profile-delete-report {
+    width: 28px;
+    height: 28px;
+    border: 0;
+    border-radius: 7px;
+    background: var(--profile-red);
+    color: #fff;
+    cursor: pointer;
+    font-size: 18px;
+    line-height: 1;
+}
+
+@media (max-width: 760px) {
+    .player-profile-page .navbar,
+    .player-profile-page .nav-links,
+    .player-profile-page .player-actions,
+    .player-profile-page .reports-header-dark {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .player-profile-page .container {
+        padding: 24px 12px;
+    }
+
+    .player-profile-page .profile-grid-dark {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
