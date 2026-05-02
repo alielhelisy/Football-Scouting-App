@@ -109,6 +109,31 @@
   padding: 10px 26px;
 }
 
+/* Edit Player uses the same form shell with blue action accents */
+.edit-player-page .ap-header {
+  background: linear-gradient(135deg, rgba(49,132,207,0.18) 0%, transparent 60%);
+}
+
+.edit-player-page .ap-header::after {
+  background: linear-gradient(90deg, var(--ap-blue), var(--ap-accent));
+}
+
+.edit-player-page .ap-header-icon,
+.edit-player-page .ap-btn-submit {
+  background: var(--ap-blue);
+}
+
+.edit-player-page .ap-card input:focus,
+.edit-player-page .ap-card select:focus {
+  border-color: var(--ap-blue);
+  box-shadow: 0 0 0 3px rgba(49,132,207,0.15);
+}
+
+.edit-player-page .ap-btn-submit:hover {
+  filter: brightness(1.12);
+  box-shadow: 0 4px 16px rgba(49,132,207,0.4);
+}
+
 .pitch-board {
     min-width: 480px;
     max-width: 700px;
