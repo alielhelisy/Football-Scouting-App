@@ -108,8 +108,10 @@
     margin: 0;
     padding: 40px 24px;
     display: flex;
-    align-items: flex-start;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
+    gap: 14px;
     background: radial-gradient(ellipse at 50% 0%, #1a1f2e 0%, #0f1117 70%);
 }
 
@@ -124,7 +126,7 @@
 .accounts-page .alert {
     width: 100%;
     max-width: 920px;
-    margin-bottom: 14px;
+    margin: 0 auto;
     background: rgba(40,168,101,0.12);
     border: 1px solid rgba(40,168,101,0.3);
     border-radius: 10px;
