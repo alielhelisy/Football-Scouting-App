@@ -93,7 +93,7 @@ scouting_app/
 
 | Key | Display |
 |---|---|
-| GK | GK |
+| GK | Goal Keeper |
 | CB | Center Back |
 | FB | Full Back (Walker) |
 | FB | Full Back (Cancelo) |
