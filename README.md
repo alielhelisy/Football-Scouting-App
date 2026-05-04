@@ -94,14 +94,14 @@ scouting_app/
 | Key | Display |
 |---|---|
 | GK | GK |
-| CB | CB |
-| FB | FB (Walker) |
-| FB | FB (Cancelo) |
-| FB | FB (Delph) |
-| 6ER | 6er |
-| 8ER | 8er |
-| WIDE | Wide player |
-| CF | CF |
+| CB | Center Back |
+| FB | Full Back (Walker) |
+| FB | Full Back (Cancelo) |
+| FB | Full Back (Delph) |
+| 6ER | Defensive Midfield |
+| 8ER |  Midfield |
+| Wide Plyaer | Winger |
+| CF | Center Forward |
 
 ## Rating Scale
 
@@ -207,9 +207,3 @@ python -m pytest -q
 - `schema.sql` can be used to recreate the database manually.
 - CSS is loaded from separate files in `static/css/` through `templates/base.html`.
 - Business logic is kept in `models.py` and covered by unit tests.
-
-## Current Test Status
-
-```text
-38 passed
-```
