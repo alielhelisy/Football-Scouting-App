@@ -1,6 +1,3 @@
--- Run this in SSMS after creating the ScoutingApp database
--- Or it is run automatically when you start the Flask app
-
 IF OBJECT_ID('reports', 'U') IS NOT NULL DROP TABLE reports;
 IF OBJECT_ID('players', 'U') IS NOT NULL DROP TABLE players;
 IF OBJECT_ID('users',   'U') IS NOT NULL DROP TABLE users;
