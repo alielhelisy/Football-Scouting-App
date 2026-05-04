@@ -1,233 +1,186 @@
-# Software Engineering Final Project
+# Football Scouting App
+
+Software Engineering final project built with Flask and Microsoft SQL Server.
 
 **Student 1:** Ali Elhelisy | **ID:** 220303928  
 **Student 2:** Mazen Mohamed | **ID:** 220303940
----
 
-## Project Overview
+## Overview
 
-A multi-user Flask web application for football scouts to manage players and create match reports. Each scout manages their own private list of players organised by position. An Admin role can view and manage all scouts' data.
+Football Scouting App is a multi-user web application for football scouts. Scouts can create player profiles, organize players by tactical position, write scouting reports, search players, and review report history. Admin users can manage accounts and view data across scouts.
 
----
+## Main Features
+
+- Register, login, logout, and account deletion.
+- Login accepts username or email.
+- Scout accounts can manage their own players and reports.
+- Admin accounts can add users, delete users, and change user roles.
+- The main protected admin account is the username `admin`.
+- Tactical dashboard grouped by the project positions.
+- Player CRUD: add, edit, delete, profile view.
+- Report creation with the project rating scale.
+- Search by position, name, and club.
+- Dark themed pages with separated CSS files.
+- Unit tests for business logic.
 
 ## Tech Stack
 
 | Layer | Technology |
 |---|---|
-| Backend | Python 3.14 + Flask |
-| Database | Microsoft SQL Server 2022 (SQLEXPRESS) |
-| DB Driver | pyodbc + ODBC Driver 17 for SQL Server |
-| Frontend | Jinja2 HTML templates + plain CSS |
+| Backend | Python + Flask |
+| Database | Microsoft SQL Server |
+| Database Driver | pyodbc + ODBC Driver 17 for SQL Server |
+| Frontend | Jinja2 templates, HTML, CSS |
 | Testing | pytest |
-
----
 
 ## Project Structure
 
-```
+```text
 scouting_app/
-├── app.py                        ← Entry point (registers all route modules)
-├── app_instance.py               ← Flask app object
-├── utils.py                      ← Shared helpers (login_required, is_admin, etc.)
-├── models.py                     ← Business logic (pure, testable)
-├── db.py                         ← SQL Server connection + wrapper
-├── routes/
-│   ├── auth.py                   ← register, login, logout, account
-│   ├── admin.py                  ← admin account management
-│   ├── players.py                ← dashboard, player CRUD, detail
-│   ├── reports.py                ← create report, edit comment
-│   └── search.py                 ← multi-position search
-├── static/
-│   └── style.css                 ← All styling
-├── templates/
-│   ├── base.html
-│   ├── login.html
-│   ├── register.html
-│   ├── dashboard.html            ← Tactical pitch board
-│   ├── players_by_position.html  ← Player table + action bar
-│   ├── add_player.html
-│   ├── edit_player.html
-│   ├── player_detail.html        ← Report history + player bio
-│   ├── create_report.html
-│   ├── edit_comment.html
-│   ├── search.html
-│   ├── account_info.html
-│   ├── admin_accounts.html
-│   └── admin_add_account.html
-└── tests/
-    └── test_logic.py             ← Unit tests (business logic only)
+|-- app.py
+|-- app_instance.py
+|-- db.py
+|-- migrate.py
+|-- models.py
+|-- schema.sql
+|-- utils.py
+|-- routes/
+|   |-- admin.py
+|   |-- auth.py
+|   |-- players.py
+|   |-- reports.py
+|   `-- search.py
+|-- templates/
+|   |-- base.html
+|   |-- login.html
+|   |-- register.html
+|   |-- dashboard.html
+|   |-- account_info.html
+|   |-- admin_accounts.html
+|   |-- admin_add_account.html
+|   |-- add_player.html
+|   |-- edit_player.html
+|   |-- player_detail.html
+|   |-- players_by_position.html
+|   |-- create_report.html
+|   |-- edit_comment.html
+|   `-- search.html
+|-- static/
+|   `-- css/
+|       |-- 01-base.css
+|       |-- 02-dashboard-legacy.css
+|       |-- 03-common-tables.css
+|       |-- 04-position-players.css
+|       |-- 05-search-legacy.css
+|       |-- 06-player-pages.css
+|       |-- 07-add-player.css
+|       |-- 08-dashboard-board.css
+|       |-- 09-add-player-refinements.css
+|       |-- 10-dashboard-home.css
+|       |-- 11-account.css
+|       |-- 12-reports.css
+|       |-- 13-search.css
+|       |-- 14-admin-accounts.css
+|       `-- 15-auth.css
+`-- tests/
+    `-- test_logic.py
 ```
-
----
-
-## Database Schema
-
-```sql
-users
-  id            INT IDENTITY PK
-  username      NVARCHAR(100) UNIQUE
-  password_hash NVARCHAR(64)
-  role          NVARCHAR(10)   -- 'SCOUT' or 'ADMIN'
-
-players
-  id             INT IDENTITY PK
-  user_id        INT FK -> users.id
-  name           NVARCHAR(100)
-  gender         NVARCHAR(10)
-  team           NVARCHAR(100)
-  position       NVARCHAR(10)   -- GK | CB | FB | 6ER | 8ER | WIDE | CF
-  other_position NVARCHAR(10)
-  first_name     NVARCHAR(100)
-  last_name      NVARCHAR(100)
-  nationality    NVARCHAR(100)
-  birthday       DATE
-  height         INT
-  weight         INT
-  foot           NVARCHAR(10)   -- Right | Left | Both
-
-reports
-  id             INT IDENTITY PK
-  player_id      INT FK -> players.id  ON DELETE CASCADE
-  rating         INT (1-5)
-  minutes_played INT
-  goals_scored   INT
-  received_cards NVARCHAR(10)   -- None | Yellow | Red
-  rated_position NVARCHAR(10)
-  comments       NVARCHAR(MAX)
-  created_at     DATETIME DEFAULT GETDATE()
-```
-
----
 
 ## Positions
 
 | Key | Display |
 |---|---|
-| GK | Goalkeeper |
-| CB | Center Back |
-| FB | Full Back |
-| 6ER | 6er (Defensive Mid) |
-| 8ER | 8er (Box-to-Box Mid) |
-| WIDE | Wide Player |
-| CF | Center Forward |
+| GK | GK |
+| CB | CB |
+| FB | FB (Walker) |
+| FB_CANCELO | FB (Cancelo) |
+| FB_DELPH | FB (Delph) |
+| 6ER | 6er |
+| 8ER | 8er |
+| WIDE | Wide player |
+| CF | CF |
 
----
+## Rating Scale
 
-## Features
-
-### Authentication
-- Register / Login / Logout with sessions and cookies
-- Delete own account (removes all player and report data)
-
-### Scout Role
-- Dashboard shows a tactical pitch board with player cards per position
-- Click a position to see all own players in a table
-- Row selection with action bar: Add Player, Edit, Delete, Details, Edit Comment
-- Add / Edit Player — Display Name, Gender, Main Position, Other Position, Team, plus optional fields (First Name, Last Name, Nationality, Birthday, Height, Weight, Foot)
-- Delete — removes player and all linked reports (ON DELETE CASCADE)
-- Details — full report history + player bio card
-- Create Report — Rating (1-5), Minutes Played, Goals Scored, Received Cards, Rated Position, Comments
-- Edit Comment — update the latest report's comment
-- Search — filter by name, club, and/or multiple positions
-
-### Admin Role
-- Sees ALL players from ALL scouts
-- Extra Scout column in player tables
-- Create Report dropdown shows all players with scout names
-- Account management: add scouts, change roles, delete accounts
-
----
-
-## User Stories
-
-| ID | Story | Acceptance Criteria |
-|---|---|---|
-| US1 | As a scout, I want to add a player with their name, team, and position so I can track prospects | Player appears on the dashboard in the correct position; empty name shows an error |
-| US2 | As a scout, I want to create a match report for a player so I can record what I observed | Report saved with all fields; visible in the Details page |
-| US3 | As a scout, I want to see a player's average rating across all reports so I can assess their level | Average displayed on the player detail page |
-| US4 | As a scout, I want to filter players by position so I can quickly find who I need | Only players matching the selected position are shown |
-| US5 | As a scout, I want to edit or delete a player so I can keep my data accurate | Updates reflect immediately; deletion removes player and all reports |
-
----
-
-## Business Logic (models.py)
-
-| Function | Description |
+| Rating | Meaning |
 |---|---|
-| validate_player_name | Not empty, max 100 chars |
-| validate_team | Strips whitespace, max 100 chars |
-| validate_position | Must be one of the 7 valid position keys, or empty string |
-| validate_stars | Integer between 1 and 5 |
-| validate_non_negative_int | Number >= 0 (minutes, goals) |
-| validate_cards | None, Yellow, or Red only |
-| compute_average_stars | Average of report ratings |
-| filter_players_by_position | Filter player list by position key |
-| stars_display | Convert float average to star string |
+| 1 | Very good performer and very suitable for our system. |
+| 2 | Promising performer and very suitable for our system. |
+| 2.5 | Very suitable player and could become a promising performer if he changes position. |
+| 3 | Very suitable player. |
+| 3.5 | Has one desired quality and might become very suitable if he changes position. |
+| 4 | Not very suitable but has one or more desired qualities. |
+| 4.5 | Might have a desired quality if he changes position. |
+| 5 | Not suitable, no desired qualities, and no prospect of changing position. |
 
----
+## Database Tables
 
-## Unit Tests (tests/test_logic.py)
+### users
 
-Tests cover business logic only — no routes, no database, no Flask context.
-
-### What is tested
-
-| Group | Tests |
-|---|---|
-| validate_player_name | valid name, empty raises, whitespace-only raises, too long raises |
-| validate_team | strips whitespace, empty returns empty, None returns empty |
-| validate_position | all 7 valid keys, lowercase accepted, invalid raises, empty allowed |
-| validate_stars | 1-5 valid, 0 raises, 6 raises, string number, non-numeric raises |
-| validate_non_negative_int | valid, zero valid, negative raises, string number, non-numeric raises |
-| validate_cards | None/Yellow/Red valid, invalid raises |
-| compute_average_stars | single, multiple, empty list, decimal |
-| filter_players_by_position | correct filter, empty returns all, no match, case insensitive |
-| stars_display | full stars, empty stars, partial, rounding |
-
-### Run Tests
-
-```
-cd /d "D:\Ali\University\4th Semester\Software Engineering\Project\scouting_app"
+```text
+id
+username
+name
+surname
+email
+password_hash
+role
 ```
 
-```
-python -m pytest tests/test_logic.py -v
+### players
+
+```text
+id
+user_id
+name
+gender
+team
+position
+other_position
+first_name
+last_name
+nationality
+birthday
+height
+weight
+foot
 ```
 
----
+### reports
+
+```text
+id
+player_id
+rating
+minutes_played
+goals_scored
+received_cards
+rated_position
+comments
+created_at
+```
 
 ## Run the App
 
-Open Command Prompt, then run:
+From the project folder:
 
-```
-cd /d "D:\Ali\University\4th Semester\Software Engineering\Project\scouting_app"
-```
-
-```
+```bash
 python app.py
 ```
 
-Open browser at: http://127.0.0.1:5000
+Then open:
 
----
-
-## Reset Database
-
-Run in SSMS if you need a clean slate:
-
-```sql
-USE ScoutingApp;
-DROP TABLE IF EXISTS reports;
-DROP TABLE IF EXISTS players;
-DROP TABLE IF EXISTS users;
+```text
+http://127.0.0.1:5000
 ```
 
-Then restart the app — tables recreate automatically.
+## Run Tests
 
----
+```bash
+python -m pytest -q
+```
 
-## SQL Server Connection Details
+## SQL Server Settings
 
 | Setting | Value |
 |---|---|
@@ -236,31 +189,15 @@ Then restart the app — tables recreate automatically.
 | Driver | ODBC Driver 17 for SQL Server |
 | Authentication | Windows Authentication |
 
----
+## Notes
 
-## Git Commit Convention
+- Tables are created automatically by the app when missing.
+- `schema.sql` can be used to recreate the database manually.
+- CSS is loaded from separate files in `static/css/` through `templates/base.html`.
+- Business logic is kept in `models.py` and covered by unit tests.
 
-All commits reference the related user story ID:
+## Current Test Status
 
+```text
+38 passed
 ```
-Add player form with name, team, position [US1]
-Create report form with full match stats [US2]
-Compute average rating from reports [US3]
-Position filter on players list [US4]
-Edit and delete player functionality [US5]
-```
-
----
-
-## Grading Checklist
-
-- [x] Flask web application
-- [x] Register, Login, Logout with sessions and cookies
-- [x] Multi-user — each scout sees only their own data
-- [x] Full CRUD on Players entity
-- [x] Raw SQL only, no ORM
-- [x] 3 tables: users, players, reports — linked via user_id
-- [x] Admin role sees all data across all scouts
-- [x] Unit tests on business logic only (no routes tested)
-- [x] GitHub Projects Kanban with user stories US1–US5
-- [x] Git commits referencing user story IDs
