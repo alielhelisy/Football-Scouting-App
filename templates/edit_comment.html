@@ -1,23 +1,56 @@
 {% extends "base.html" %}
-{% block title %}Edit Comment — {{ player.name }}{% endblock %}
+{% block title %}Edit Comment - {{ player.name }}{% endblock %}
+{% block body_class %}edit-comment-page{% endblock %}
 
 {% block content %}
-<div class="auth-card">
-    <div class="auth-header">EDIT COMMENT</div>
-    <p class="sub-label">Player: <strong>{{ player.name }}</strong> ({{ pos_display }})</p>
-    <form method="POST" class="auth-form">
-        <div class="form-group">
-            <label for="comment">Latest Report Comment</label>
-            <textarea id="comment" name="comment" rows="5">{{ latest.comments or '' }}</textarea>
+<section class="edit-comment-card">
+    <header class="edit-comment-header">
+        <div class="edit-comment-icon" aria-hidden="true">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+            </svg>
         </div>
-        <div class="auth-actions">
-            <span></span>
-            <div class="auth-buttons">
-                <a href="{{ url_for('players_by_position', pos_key=player.position) }}"
-                   class="btn btn-secondary">Cancel</a>
-                <button type="submit" class="btn btn-primary">Save</button>
+        <h1>Edit Comment</h1>
+    </header>
+
+    <form method="POST">
+        <div class="edit-comment-body">
+            <div class="comment-player-info">
+                <span class="comment-player-label">Player:</span>
+                <strong>{{ player.name }}</strong>
+                {% if pos_display %}<span class="comment-position-badge">{{ pos_display }}</span>{% endif %}
+            </div>
+
+            <div class="comment-field">
+                <label for="comment">Latest Report Comment</label>
+                <textarea id="comment" name="comment" oninput="updateCommentCount()" placeholder="Write your scouting comment here...">{{ latest.comments or '' }}</textarea>
+                <div class="comment-count" id="comment-count">0 characters</div>
             </div>
         </div>
+
+        <footer class="edit-comment-footer">
+            <a href="{{ url_for('players_by_position', pos_key=player.position) }}" class="comment-cancel">Cancel</a>
+            <button type="submit" class="comment-save">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                     stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
+                    <polyline points="17 21 17 13 7 13 7 21"></polyline>
+                    <polyline points="7 3 7 8 15 8"></polyline>
+                </svg>
+                Save
+            </button>
+        </footer>
     </form>
-</div>
+</section>
+
+<script>
+function updateCommentCount() {
+    var el = document.getElementById('comment');
+    var counter = document.getElementById('comment-count');
+    var len = el.value.length;
+    counter.textContent = len + ' character' + (len !== 1 ? 's' : '');
+}
+updateCommentCount();
+</script>
 {% endblock %}
