@@ -96,8 +96,8 @@ scouting_app/
 | GK | GK |
 | CB | CB |
 | FB | FB (Walker) |
-| FB_CANCELO | FB (Cancelo) |
-| FB_DELPH | FB (Delph) |
+| FB | FB (Cancelo) |
+| FB | FB (Delph) |
 | 6ER | 6er |
 | 8ER | 8er |
 | WIDE | Wide player |
