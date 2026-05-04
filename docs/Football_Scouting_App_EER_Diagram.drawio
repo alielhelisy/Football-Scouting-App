@@ -1,0 +1,83 @@
+<mxfile host="Electron" agent="Codex" version="29.3.0">
+  <diagram name="Football Scouting App EER" id="football-scouting-app-eer">
+    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="users" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=16;fontStyle=1;" value="Users" vertex="1"><mxGeometry height="60" width="120" x="150" y="410" as="geometry" /></mxCell>
+        <mxCell id="players" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=16;fontStyle=1;" value="Players" vertex="1"><mxGeometry height="60" width="120" x="640" y="410" as="geometry" /></mxCell>
+        <mxCell id="reports" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=16;fontStyle=1;" value="Reports" vertex="1"><mxGeometry height="60" width="120" x="1130" y="410" as="geometry" /></mxCell>
+        <mxCell id="owns" parent="1" style="rhombus;whiteSpace=wrap;html=1;fontSize=13;" value="Owns" vertex="1"><mxGeometry height="80" width="80" x="400" y="400" as="geometry" /></mxCell>
+        <mxCell id="has" parent="1" style="rhombus;whiteSpace=wrap;html=1;fontSize=13;" value="Has" vertex="1"><mxGeometry height="80" width="80" x="890" y="400" as="geometry" /></mxCell>
+        <mxCell id="u_owns" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="users" target="owns"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="owns_p" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="owns" target="players"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="p_has" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="players" target="has"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="has_r" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="has" target="reports"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="card_u" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=14;fontStyle=1;" value="1" vertex="1"><mxGeometry height="30" width="40" x="300" y="395" as="geometry" /></mxCell>
+        <mxCell id="card_p1" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=14;fontStyle=1;" value="M" vertex="1"><mxGeometry height="30" width="40" x="560" y="395" as="geometry" /></mxCell>
+        <mxCell id="card_p2" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=14;fontStyle=1;" value="1" vertex="1"><mxGeometry height="30" width="40" x="790" y="395" as="geometry" /></mxCell>
+        <mxCell id="card_r" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=14;fontStyle=1;" value="M" vertex="1"><mxGeometry height="30" width="40" x="1020" y="395" as="geometry" /></mxCell>
+        <mxCell id="u_id" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;fontSize=12;fontStyle=4;" value="User_ID" vertex="1"><mxGeometry height="45" width="110" x="55" y="300" as="geometry" /></mxCell>
+        <mxCell id="u_username" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;fontSize=12;" value="Username" vertex="1"><mxGeometry height="45" width="110" x="195" y="270" as="geometry" /></mxCell>
+        <mxCell id="u_name" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;fontSize=12;fillColor=#fff2cc;strokeColor=#d6b656;" value="Name" vertex="1"><mxGeometry height="45" width="110" x="315" y="330" as="geometry" /></mxCell>
+        <mxCell id="u_first" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;fontSize=12;" value="First_Name" vertex="1"><mxGeometry height="45" width="110" x="345" y="240" as="geometry" /></mxCell>
+        <mxCell id="u_last" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;fontSize=12;" value="Last_Name" vertex="1"><mxGeometry height="45" width="110" x="445" y="300" as="geometry" /></mxCell>
+        <mxCell id="u_email" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;fontSize=12;" value="Email" vertex="1"><mxGeometry height="45" width="110" x="315" y="530" as="geometry" /></mxCell>
+        <mxCell id="u_pass" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;fontSize=12;" value="Password_Hash" vertex="1"><mxGeometry height="45" width="130" x="125" y="560" as="geometry" /></mxCell>
+        <mxCell id="u_role" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;fontSize=12;" value="Role" vertex="1"><mxGeometry height="45" width="110" x="25" y="480" as="geometry" /></mxCell>
+        <mxCell id="ul1" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="users" target="u_id"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="ul2" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="users" target="u_username"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="ul3" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="users" target="u_name"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="ul4" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="users" target="u_email"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="ul5" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="users" target="u_pass"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="ul6" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="users" target="u_role"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="name_first" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="u_name" target="u_first"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="name_last" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="u_name" target="u_last"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="p_id" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;fontSize=12;fontStyle=4;" value="Player_ID" vertex="1"><mxGeometry height="45" width="115" x="610" y="235" as="geometry" /></mxCell>
+        <mxCell id="p_display" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;fontSize=12;" value="Display_Name" vertex="1"><mxGeometry height="45" width="135" x="745" y="260" as="geometry" /></mxCell>
+        <mxCell id="p_fullname" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;fontSize=12;fillColor=#fff2cc;strokeColor=#d6b656;" value="Full_Name" vertex="1"><mxGeometry height="45" width="115" x="470" y="260" as="geometry" /></mxCell>
+        <mxCell id="p_first" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;fontSize=12;" value="First_Name" vertex="1"><mxGeometry height="45" width="115" x="410" y="170" as="geometry" /></mxCell>
+        <mxCell id="p_last" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;fontSize=12;" value="Last_Name" vertex="1"><mxGeometry height="45" width="115" x="545" y="165" as="geometry" /></mxCell>
+        <mxCell id="p_gender" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;fontSize=12;" value="Gender" vertex="1"><mxGeometry height="45" width="115" x="810" y="340" as="geometry" /></mxCell>
+        <mxCell id="p_team" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;fontSize=12;" value="Club_Team" vertex="1"><mxGeometry height="45" width="115" x="820" y="520" as="geometry" /></mxCell>
+        <mxCell id="p_position" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;fontSize=12;" value="Main_Position" vertex="1"><mxGeometry height="45" width="135" x="610" y="575" as="geometry" /></mxCell>
+        <mxCell id="p_other" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;fontSize=12;" value="Other_Position" vertex="1"><mxGeometry height="45" width="135" x="450" y="525" as="geometry" /></mxCell>
+        <mxCell id="p_nat" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;fontSize=12;" value="Nationality" vertex="1"><mxGeometry height="45" width="115" x="440" y="350" as="geometry" /></mxCell>
+        <mxCell id="p_birth" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;fontSize=12;" value="Birthday" vertex="1"><mxGeometry height="45" width="115" x="520" y="640" as="geometry" /></mxCell>
+        <mxCell id="p_height" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;fontSize=12;" value="Height" vertex="1"><mxGeometry height="45" width="115" x="680" y="650" as="geometry" /></mxCell>
+        <mxCell id="p_weight" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;fontSize=12;" value="Weight" vertex="1"><mxGeometry height="45" width="115" x="820" y="625" as="geometry" /></mxCell>
+        <mxCell id="p_foot" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;fontSize=12;" value="Preferred_Foot" vertex="1"><mxGeometry height="45" width="135" x="760" y="180" as="geometry" /></mxCell>
+        <mxCell id="pl1" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="players" target="p_id"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="pl2" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="players" target="p_display"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="pl3" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="players" target="p_fullname"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="pl4" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="players" target="p_gender"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="pl5" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="players" target="p_team"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="pl6" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="players" target="p_position"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="pl7" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="players" target="p_other"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="pl8" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="players" target="p_nat"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="pl9" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="players" target="p_birth"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="pl10" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="players" target="p_height"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="pl11" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="players" target="p_weight"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="pl12" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="players" target="p_foot"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="full_first" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="p_fullname" target="p_first"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="full_last" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="p_fullname" target="p_last"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="r_id" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;fontSize=12;fontStyle=4;" value="Report_ID" vertex="1"><mxGeometry height="45" width="115" x="1125" y="245" as="geometry" /></mxCell>
+        <mxCell id="r_rating" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;fontSize=12;" value="Rating" vertex="1"><mxGeometry height="45" width="115" x="1290" y="285" as="geometry" /></mxCell>
+        <mxCell id="r_minutes" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;fontSize=12;" value="Minutes_Played" vertex="1"><mxGeometry height="45" width="140" x="1335" y="405" as="geometry" /></mxCell>
+        <mxCell id="r_goals" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;fontSize=12;" value="Goals_Scored" vertex="1"><mxGeometry height="45" width="140" x="1315" y="525" as="geometry" /></mxCell>
+        <mxCell id="r_cards" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;fontSize=12;" value="Received_Cards" vertex="1"><mxGeometry height="45" width="140" x="1130" y="610" as="geometry" /></mxCell>
+        <mxCell id="r_pos" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;fontSize=12;" value="Rated_Position" vertex="1"><mxGeometry height="45" width="140" x="980" y="550" as="geometry" /></mxCell>
+        <mxCell id="r_comments" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;fontSize=12;" value="Comments" vertex="1"><mxGeometry height="45" width="115" x="955" y="320" as="geometry" /></mxCell>
+        <mxCell id="r_created" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;fontSize=12;" value="Created_At" vertex="1"><mxGeometry height="45" width="115" x="1230" y="660" as="geometry" /></mxCell>
+        <mxCell id="rl1" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="reports" target="r_id"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="rl2" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="reports" target="r_rating"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="rl3" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="reports" target="r_minutes"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="rl4" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="reports" target="r_goals"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="rl5" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="reports" target="r_cards"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="rl6" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="reports" target="r_pos"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="rl7" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="reports" target="r_comments"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="rl8" parent="1" style="endArrow=none;html=1;rounded=0;" edge="1" source="reports" target="r_created"><mxGeometry relative="1" as="geometry" /></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
