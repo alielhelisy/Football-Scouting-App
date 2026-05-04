@@ -1,6 +1,6 @@
-<mxfile host="Electron" agent="Codex">
+<mxfile host="Electron" agent="draw.io">
   <diagram name="Football Scouting App EER" id="football-scouting-app-eer">
-    <mxGraphModel dx="1695" dy="889" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="900" math="0" shadow="0">
+    <mxGraphModel dx="1441" dy="756" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="900" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -35,7 +35,7 @@
           <mxGeometry height="30" width="40" x="870" y="410" as="geometry" />
         </mxCell>
         <mxCell id="card_r" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=14;fontStyle=1;" value="M" vertex="1">
-          <mxGeometry height="30" width="40" x="952.5" y="410" as="geometry" />
+          <mxGeometry height="30" width="40" x="950" y="410" as="geometry" />
         </mxCell>
         <mxCell id="u_id" parent="1" style="ellipse;whiteSpace=wrap;html=1;align=center;fontSize=12;fontStyle=4;" value="User_ID" vertex="1">
           <mxGeometry height="45" width="110" x="60" y="330" as="geometry" />
@@ -220,16 +220,16 @@
         <mxCell id="dZWYzH5aookBlfA9rzii-1" edge="1" parent="1" source="p_height" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" target="p_height">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="uOzof79BMvdTf3DXVp6L-3" edge="1" parent="1" source="has" style="shape=link;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="reports" value="">
-          <mxGeometry relative="1" width="100" as="geometry">
-            <mxPoint x="980" y="450" as="sourcePoint" />
-            <mxPoint x="1080" y="450" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
         <mxCell id="uOzof79BMvdTf3DXVp6L-4" edge="1" parent="1" source="owns" style="shape=link;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="players" value="">
           <mxGeometry relative="1" width="100" as="geometry">
             <mxPoint x="530" y="430" as="sourcePoint" />
             <mxPoint x="630" y="440" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-biblZEJbDikrwr20o5_-1" edge="1" parent="1" source="has" style="shape=link;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="reports" value="">
+          <mxGeometry relative="1" width="100" as="geometry">
+            <mxPoint x="1020" y="440" as="sourcePoint" />
+            <mxPoint x="1090" y="450" as="targetPoint" />
           </mxGeometry>
         </mxCell>
       </root>
